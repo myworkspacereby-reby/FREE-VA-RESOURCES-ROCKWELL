@@ -1,0 +1,3376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ROCKWELL // High Performance VA Training Portal</title>
+  
+  <!-- Premium Fonts Integration -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Great+Vibes&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,400&family=Roboto+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* Premium CSS Variables conforming to Design System & Soothing Theme */
+    :root {
+      --bg-primary: #0A0D14;          /* Deep, premium midnight black */
+      --bg-secondary: #0A0D14;        /* Deep, premium midnight black */
+      --card-bg: #121824;             /* Rich dark slate background */
+      --card-border: #2B354C;         /* Subtle premium dark border */
+      --card-border-hover: #E2A83B;   /* Premium Matte Gold hover */
+      --text-white: #FFFFFF;          /* Clear white */
+      --text-muted: #94A3B8;          /* soft muted gray */
+      --text-secondary: #94A3B8;      /* soft muted gray */
+      --accent-gold: #E2A83B;         /* Premium Matte Gold */
+      --accent-green: #10B981;        /* Vibrant emerald green checkmarks */
+      --accent-green-light: rgba(16, 185, 129, 0.08);
+      --font-sans: 'Arial', 'Roboto', system-ui, -apple-system, sans-serif;
+      --font-display: 'Arial', 'Roboto', sans-serif;
+      --font-mono: 'Roboto Mono', monospace;
+    }
+
+    /* Global Reset & Base Styling */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--bg-primary);
+      color: var(--text-white);
+      font-family: var(--font-sans);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      padding-bottom: 80px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Announcement Bar */
+    .announcement-bar {
+      background-color: var(--bg-secondary);
+      border-bottom: 1px solid var(--card-border);
+      color: var(--accent-gold);
+      font-family: var(--font-mono);
+      font-size: 13px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.25em;
+      padding: 12px 16px;
+      text-align: center;
+    }
+
+    /* Header & Navigation */
+    header {
+      background-color: rgba(15, 23, 42, 0.85);
+      border-bottom: 1px solid var(--card-border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    .nav-wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 80px;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .logo-svg {
+      transition: transform 0.3s ease;
+    }
+
+    .logo-container:hover .logo-svg {
+      transform: rotate(-5deg) scale(1.05);
+    }
+
+    .brand-name {
+      font-family: var(--font-display);
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      color: var(--text-white);
+      text-transform: uppercase;
+    }
+
+    .brand-accent {
+      color: var(--accent-gold);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .nav-link {
+      font-family: var(--font-sans);
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      color: var(--text-muted);
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: color 0.2s ease, transform 0.2s ease;
+      position: relative;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background-color: var(--accent-gold);
+      transition: width 0.2s ease;
+    }
+
+    .nav-link:hover {
+      color: var(--text-white);
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+    .btn-connect {
+      font-family: var(--font-sans);
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      color: var(--accent-gold);
+      background-color: transparent;
+      border: 1px solid var(--accent-gold);
+      padding: 12px 28px;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      cursor: pointer;
+    }
+
+    .btn-connect:hover {
+      background-color: var(--accent-gold);
+      color: var(--bg-primary);
+      box-shadow: 0 4px 12px rgba(20, 184, 166, 0.15);
+    }
+
+    /* Hero Section */
+    .hero-section {
+      padding: 80px 0 40px 0;
+      text-align: center;
+      position: relative;
+    }
+
+    .hero-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--accent-gold);
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: 64px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      color: var(--text-white);
+      line-height: 1.15;
+      margin-bottom: 24px;
+      max-width: 1000px;
+      margin-left: auto;
+      margin-right: auto;
+      text-transform: uppercase;
+    }
+
+    .hero-subtitle {
+      font-family: var(--font-sans);
+      font-size: 20px;
+      color: var(--text-muted);
+      max-width: 750px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    .hero-divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
+      width: 180px;
+      margin: 32px auto;
+    }
+
+    /* Stats Banner */
+    .stats-banner {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      max-width: 960px;
+      margin: 0 auto 56px auto;
+      border-top: 1px solid var(--card-border);
+      border-bottom: 1px solid var(--card-border);
+      padding: 28px 0;
+      background-color: transparent;
+    }
+
+    .stat-item {
+      text-align: center;
+      border-right: 1px solid var(--card-border);
+    }
+
+    .stat-item:last-child {
+      border-right: none;
+    }
+
+    .stat-number {
+      font-family: var(--font-display);
+      font-size: 48px;
+      font-weight: 700;
+      color: var(--text-white);
+      letter-spacing: -0.01em;
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent-gold);
+      margin-top: 10px;
+    }
+
+    /* ==========================================================================
+       SPACIOUS & FAIR RESPONSIVE LAYOUT SYSTEM
+       ========================================================================== */
+    #training-paths {
+      margin-bottom: 120px;
+      display: flex;
+      flex-direction: column;
+      gap: 80px;
+    }
+
+    .category-section {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Category Header Customization - Clean Full Width */
+    .category-header {
+      margin-bottom: 32px;
+      border-bottom: 1px solid var(--card-border);
+      padding-bottom: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .category-id {
+      font-family: var(--font-mono);
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      color: var(--accent-gold);
+      text-transform: uppercase;
+      display: block;
+    }
+
+    .category-title {
+      font-family: var(--font-display);
+      font-size: 32px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      color: var(--text-white);
+      line-height: 1.25;
+    }
+
+    .category-desc {
+      font-family: var(--font-sans);
+      font-size: 16px;
+      color: var(--text-muted);
+      line-height: 1.6;
+      max-width: 900px;
+    }
+
+    /* Spacious & Fair Cards Grid System matching Photo 2 */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+    }
+
+    @media (max-width: 1199px) {
+      .cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 767px) {
+      .cards-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Card Design - Premium Rounded Card */
+    .card {
+      background-color: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      padding: 30px 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+      overflow: hidden;
+      height: 100%;
+    }
+
+    .card:hover {
+      border-color: var(--card-border-hover);
+      transform: translateY(-4px);
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4);
+    }
+
+    .card-top {
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .card-header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 18px;
+    }
+
+    .card-icon-container {
+      width: 44px;
+      height: 44px;
+      border-radius: 8px;
+      background-color: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--card-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent-gold);
+      transition: all 0.3s ease;
+    }
+
+    .card:hover .card-icon-container {
+      background-color: rgba(233, 185, 73, 0.08);
+      border-color: rgba(233, 185, 73, 0.3);
+      color: var(--accent-gold);
+    }
+
+    .card-number {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      letter-spacing: 0.05em;
+    }
+
+    .card-title {
+      font-family: var(--font-sans);
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text-white);
+      margin-bottom: 12px;
+      line-height: 1.35;
+      letter-spacing: 0.02em;
+    }
+
+    /* Duration Badge matching Photo 2 (3 DAYS, 1 WEEK etc) */
+    .card-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      border-radius: 9999px;
+      background-color: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      font-size: 12px;
+      font-family: var(--font-mono);
+      color: var(--text-muted);
+      margin-bottom: 24px;
+      width: fit-content;
+    }
+
+    .badge-icon {
+      color: var(--text-secondary);
+    }
+
+    /* Card features (benefits/goals list) matching Photo 2 */
+    .card-features {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+
+    .card-feature {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .feature-check {
+      flex-shrink: 0;
+      margin-top: 2px;
+      color: var(--accent-green);
+    }
+
+    .feature-text {
+      font-family: var(--font-sans);
+      font-size: 15px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .feature-text strong {
+      color: var(--text-white);
+      font-weight: 600;
+    }
+
+    .feature-desc {
+      margin-top: 4px;
+      font-size: 14px;
+      color: var(--text-muted);
+      opacity: 0.85;
+      line-height: 1.45;
+    }
+
+    /* Primary Interactive CTA Button matching "CHOOSE THIS WORKFLOW" */
+    .card-btn {
+      display: block;
+      width: 100%;
+      background-color: #1F2736;
+      border: 1px solid #2B354C;
+      color: var(--text-white);
+      font-family: var(--font-sans);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-align: center;
+      padding: 14px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      text-decoration: none;
+      margin-top: auto; /* Push down to the bottom */
+    }
+
+    .card-btn:hover {
+      background-color: var(--accent-gold);
+      border-color: var(--accent-gold);
+      color: #0A0D14;
+      box-shadow: 0 0 15px rgba(233, 185, 73, 0.4);
+    }
+
+    /* Card Tools list */
+    .tools-container {
+      margin-top: 16px;
+      padding-top: 14px;
+      border-top: 1px solid var(--card-border);
+    }
+
+    .tools-label {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      margin-bottom: 10px;
+    }
+
+    .tools-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tool-tag {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--accent-gold);
+      background-color: rgba(233, 185, 73, 0.05);
+      border: 1px solid rgba(233, 185, 73, 0.15);
+      padding: 4px 10px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* ==========================================================================
+       FAQ SECTION
+       ========================================================================== */
+    .faq-section {
+      margin-top: 120px;
+      border-top: 1px solid var(--card-border);
+      padding-top: 80px;
+    }
+
+    .faq-grid {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 64px;
+    }
+
+    .faq-title {
+      font-family: var(--font-display);
+      font-size: 50px;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--text-white);
+      position: sticky;
+      top: 110px;
+      letter-spacing: 0.05em;
+      line-height: 1.15;
+    }
+
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+    }
+
+    details.faq-item {
+      border-bottom: 1px solid var(--card-border);
+      padding: 24px 0;
+      cursor: pointer;
+    }
+
+    details.faq-item:first-of-type {
+      padding-top: 0;
+    }
+
+    details.faq-item:last-of-type {
+      border-bottom: none;
+    }
+
+    details.faq-item summary {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      list-style: none;
+      outline: none;
+      user-select: none;
+      gap: 20px;
+    }
+
+    details.faq-item summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .faq-question {
+      font-family: var(--font-sans);
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-white);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin: 0;
+      transition: color 0.25s ease;
+    }
+
+    details.faq-item:hover .faq-question {
+      color: var(--accent-gold);
+    }
+
+    .faq-toggle-icon {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      border: 1px solid var(--card-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-secondary);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      flex-shrink: 0;
+    }
+
+    details.faq-item:hover .faq-toggle-icon {
+      border-color: var(--accent-gold);
+      color: var(--accent-gold);
+      box-shadow: 0 0 8px rgba(20, 184, 166, 0.15);
+    }
+
+    details.faq-item[open] .faq-toggle-icon {
+      transform: rotate(45deg);
+      background-color: rgba(20, 184, 166, 0.08);
+      border-color: var(--accent-gold);
+      color: var(--accent-gold);
+    }
+
+    .faq-answer-container {
+      padding-top: 14px;
+      overflow: hidden;
+    }
+
+    .faq-answer {
+      font-family: var(--font-sans);
+      font-size: 16px;
+      color: var(--text-muted);
+      line-height: 1.6;
+      animation: faqSlideDown 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    @keyframes faqSlideDown {
+      from {
+        opacity: 0;
+        transform: translateY(-8px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ==========================================================================
+       FOOTER
+       ========================================================================== */
+    footer {
+      background-color: var(--bg-secondary);
+      border-top: 1px solid var(--card-border);
+      padding: 80px 0 48px 0;
+      margin-top: 120px;
+    }
+
+    .footer-wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 48px;
+      margin-bottom: 56px;
+    }
+
+    .footer-brand {
+      max-width: 440px;
+    }
+
+    .footer-brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .footer-brand-text {
+      font-size: 15px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .footer-links-group {
+      display: flex;
+      gap: 64px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .footer-link-title {
+      font-family: var(--font-mono);
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      color: var(--accent-gold);
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .footer-link {
+      font-size: 15px;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .footer-link:hover {
+      color: var(--text-white);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid var(--card-border);
+      padding-top: 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .copyright {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      letter-spacing: 0.05em;
+      color: var(--text-secondary);
+    }
+
+    .credit-tag {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      letter-spacing: 0.05em;
+      color: var(--text-secondary);
+    }
+
+    .credit-tag-gold {
+      color: var(--accent-gold);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    /* ==========================================================================
+       RESPONSIVE ADAPTATIONS
+       ========================================================================== */
+    @media (max-width: 1023px) {
+      .hero-title {
+        font-size: 40px;
+      }
+
+      .stats-banner {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px 0;
+        max-width: 600px;
+      }
+
+      .stat-item {
+        border-right: none;
+      }
+
+      .stat-item:nth-child(odd) {
+        border-right: 1px solid var(--card-border);
+      }
+
+      .category-section {
+        margin-bottom: 56px;
+        border-bottom: 1px solid var(--card-border);
+        padding-bottom: 40px;
+      }
+
+      .category-section:last-of-type {
+        margin-bottom: 0;
+        border-bottom: none;
+        padding-bottom: 0;
+      }
+
+      .faq-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+
+      .faq-title {
+        position: static;
+        font-size: 34px;
+      }
+    }
+
+    @media (max-width: 767px) {
+      .nav-links {
+        display: none; /* Keep simple on mobile header */
+      }
+
+      .stats-banner {
+        grid-template-columns: 1fr;
+        gap: 16px 0;
+        padding: 20px 0;
+      }
+
+      .stat-item {
+        border-right: none !important;
+        padding: 10px 0;
+        border-bottom: 1px solid rgba(30, 41, 59, 0.5);
+      }
+
+      .stat-item:last-child {
+        border-bottom: none;
+      }
+
+      footer {
+        padding: 56px 0 32px 0;
+      }
+
+      .footer-wrapper {
+        flex-direction: column;
+        gap: 32px;
+      }
+
+      .footer-links-group {
+        gap: 40px;
+      }
+    }
+
+    /* ==========================================================================
+       LESSON PORTAL (HUD/TAKOVER VIEW)
+       ========================================================================== */
+    .lesson-screen-container {
+      background-color: var(--bg-primary);
+      min-height: 100vh;
+      color: var(--text-white);
+      font-family: var(--font-sans);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .lesson-header {
+      background-color: var(--bg-secondary);
+      border-bottom: 1px solid var(--card-border);
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      padding: 16px 24px;
+    }
+
+    .lesson-header-wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1400px;
+      margin: 0 auto;
+      width: 100%;
+      gap: 16px;
+    }
+
+    .btn-back {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-family: var(--font-mono);
+      font-size: 14px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      transition: color 0.25s ease;
+      cursor: pointer;
+      border: none;
+      background: none;
+    }
+
+    .btn-back:hover {
+      color: var(--accent-gold);
+    }
+
+    .active-course-badge {
+      background-color: rgba(233, 185, 73, 0.08);
+      border: 1px solid rgba(233, 185, 73, 0.2);
+      color: var(--accent-gold);
+      padding: 6px 12px;
+      border-radius: 4px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .lesson-progress-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .lesson-progress-text {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .lesson-progress-bar-outer {
+      width: 120px;
+      height: 6px;
+      background-color: var(--bg-primary);
+      border: 1px solid var(--card-border);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+
+    .lesson-progress-bar-inner {
+      height: 100%;
+      background-color: var(--accent-gold);
+      width: 0%;
+      transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .lesson-layout {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      flex-grow: 1;
+      max-width: 1400px;
+      margin: 0 auto;
+      width: 100%;
+      border-left: 1px solid var(--card-border);
+      border-right: 1px solid var(--card-border);
+      background-color: var(--bg-secondary);
+    }
+
+    /* Sidebar list */
+    .lesson-sidebar {
+      background-color: var(--bg-secondary);
+      border-right: 1px solid var(--card-border);
+      overflow-y: auto;
+      max-height: calc(100vh - 80px);
+      position: sticky;
+      top: 80px;
+    }
+
+    .lesson-sidebar-header {
+      padding: 24px;
+      border-bottom: 1px solid var(--card-border);
+    }
+
+    .sidebar-title {
+      font-family: var(--font-display);
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text-white);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .sidebar-subtitle {
+      font-size: 12px;
+      color: var(--text-secondary);
+      margin-top: 4px;
+    }
+
+    .lesson-list {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .lesson-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 20px 24px;
+      border-bottom: 1px solid rgba(43, 53, 76, 0.5);
+      cursor: pointer;
+      transition: all 0.25s ease;
+      position: relative;
+    }
+
+    .lesson-item:hover {
+      background-color: rgba(28, 35, 51, 0.4);
+    }
+
+    .lesson-item.active {
+      background-color: var(--card-bg);
+      border-left: 3px solid var(--accent-gold);
+    }
+
+    .lesson-item-status {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      border: 1px solid var(--card-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+      transition: all 0.25s ease;
+      background-color: var(--bg-secondary);
+    }
+
+    .lesson-item.completed .lesson-item-status {
+      background-color: var(--accent-green-light);
+      border-color: var(--accent-green);
+      color: var(--accent-green);
+    }
+
+    .lesson-item.active .lesson-item-status {
+      border-color: var(--accent-gold);
+    }
+
+    .lesson-item-info {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .lesson-item-number {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      letter-spacing: 0.05em;
+    }
+
+    .lesson-item.active .lesson-item-number {
+      color: var(--accent-gold);
+    }
+
+    .lesson-item-title {
+      font-family: var(--font-sans);
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-muted);
+      line-height: 1.4;
+      transition: color 0.25s ease;
+    }
+
+    .lesson-item.active .lesson-item-title {
+      color: var(--text-white);
+    }
+
+    /* Content Pane */
+    .lesson-content-pane {
+      padding: 48px;
+      overflow-y: auto;
+      max-height: calc(100vh - 80px);
+      background-color: var(--bg-primary);
+    }
+
+    .lesson-content-header {
+      border-bottom: 1px solid var(--card-border);
+      padding-bottom: 32px;
+      margin-bottom: 32px;
+    }
+
+    .lesson-headline {
+      font-family: var(--font-display);
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--text-white);
+      letter-spacing: -0.02em;
+      line-height: 1.25;
+      margin-top: 8px;
+    }
+
+    .lesson-meta-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-top: 16px;
+      flex-wrap: wrap;
+    }
+
+    .lesson-type-badge {
+      background-color: var(--bg-secondary);
+      border: 1px solid var(--card-border);
+      color: var(--text-muted);
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .lesson-body {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .lesson-paragraph {
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--text-muted);
+    }
+
+    .lesson-paragraph strong {
+      color: var(--text-white);
+    }
+
+    /* Exercise Block styled precisely like the card layout */
+    .exercise-card {
+      background-color: var(--bg-secondary);
+      border: 1px solid var(--accent-gold);
+      border-radius: 8px;
+      padding: 32px;
+      margin-top: 40px;
+      position: relative;
+    }
+
+    .exercise-card-badge {
+      position: absolute;
+      top: -12px;
+      left: 32px;
+      background-color: var(--accent-gold);
+      color: var(--bg-secondary);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 4px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .exercise-title {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text-white);
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .exercise-section {
+      margin-bottom: 24px;
+    }
+
+    .exercise-section:last-of-type {
+      margin-bottom: 0;
+    }
+
+    .exercise-section-title {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--accent-gold);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .exercise-content {
+      color: var(--text-muted);
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    .exercise-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 8px;
+    }
+
+    .exercise-list-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 15px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .exercise-list-item::before {
+      content: "•";
+      color: var(--accent-gold);
+      font-weight: bold;
+      display: inline-block;
+      width: 1em;
+      margin-left: -1em;
+    }
+
+    .exercise-list-item-clean {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 15px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .exercise-check-icon {
+      color: var(--accent-green);
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+
+    /* Lesson Navigation Bar bottom */
+    .lesson-action-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 48px;
+      padding-top: 32px;
+      border-top: 1px solid var(--card-border);
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn-action-primary {
+      background-color: var(--accent-gold);
+      color: var(--bg-secondary);
+      border: none;
+      padding: 14px 28px;
+      font-family: var(--font-mono);
+      font-size: 14px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-action-primary:hover {
+      background-color: var(--text-white);
+      transform: translateY(-1px);
+    }
+
+    .btn-action-secondary {
+      background-color: transparent;
+      border: 1px solid var(--card-border);
+      color: var(--text-white);
+      padding: 14px 28px;
+      font-family: var(--font-mono);
+      font-size: 14px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-action-secondary:hover {
+      border-color: var(--accent-gold);
+      color: var(--accent-gold);
+    }
+
+    /* Responsive Adaptation for Lesson Portal */
+    @media (max-width: 991px) {
+      .lesson-layout {
+        grid-template-columns: 1fr;
+        border-left: none;
+        border-right: none;
+      }
+
+      .lesson-sidebar {
+        position: static;
+        max-height: 240px;
+        border-right: none;
+        border-bottom: 1px solid var(--card-border);
+      }
+
+      .lesson-content-pane {
+        padding: 32px 24px;
+        max-height: none;
+      }
+    }
+
+    /* ==========================================================================
+       CERTIFICATE SYSTEM AND CLAIM SCREENS
+       ========================================================================== */
+    .certificate-frame {
+      background-color: #ffffff;
+      color: #0A0D14;
+      border: 16px solid #1E40AF;
+      padding: 48px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+      width: 100%;
+      max-width: 900px;
+      margin: 0 auto;
+      aspect-ratio: 1.414 / 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-sizing: border-box;
+    }
+
+    /* Angle blue accents */
+    .certificate-frame::before {
+      content: "";
+      position: absolute;
+      top: -100px;
+      right: -100px;
+      width: 250px;
+      height: 250px;
+      background-color: #3B82F6;
+      transform: rotate(45deg);
+      z-index: 1;
+    }
+
+    .certificate-frame::after {
+      content: "";
+      position: absolute;
+      bottom: -100px;
+      left: -100px;
+      width: 250px;
+      height: 250px;
+      background-color: #1E40AF;
+      transform: rotate(45deg);
+      z-index: 1;
+    }
+
+    .certificate-inner-border {
+      border: 2px solid #3B82F6;
+      padding: 24px;
+      height: 100%;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      z-index: 10;
+      box-sizing: border-box;
+    }
+
+    @media (max-width: 768px) {
+      .certificate-frame {
+        padding: 20px;
+        border-width: 8px;
+        aspect-ratio: auto;
+        height: auto;
+        min-height: 500px;
+      }
+      .certificate-inner-border {
+        padding: 12px;
+      }
+      .cert-title-brand {
+        font-size: 18px !important;
+      }
+      .cert-recipient-name {
+        font-size: 32px !important;
+      }
+      .cert-body-text {
+        font-size: 11px !important;
+      }
+      .cert-signature-name {
+        font-size: 12px !important;
+      }
+    }
+
+    
+  </style>
+</head>
+<body>
+
+  <!-- Header Navigation -->
+  <header>
+    <div class="container nav-wrapper">
+      <a href="#" class="logo-container" id="nav-logo">
+        <span class="brand-name">ROCKWELL</span>
+      </a>
+
+      <nav class="nav-links" id="main-navigation">
+        <a href="#" class="nav-link">HOME</a>
+        <a href="#training-paths" class="nav-link">TRAINING PATHS</a>
+        <a href="#faq" class="nav-link">FAQ</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="container hero-section">
+    <span class="hero-eyebrow">Professional Specializations</span>
+    <h1 class="hero-title" id="main-hero-title">High Performance VA Training Paths</h1>
+    <p class="hero-subtitle">Choose the specific niche system that fits your skills and goals</p>
+    <hr class="hero-divider">
+
+    <!-- Stats Performance Bar -->
+    <div class="stats-banner" id="stats-banner">
+      <div class="stat-item">
+        <div class="stat-number">4</div>
+        <div class="stat-label">Core Domains</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">15</div>
+        <div class="stat-label">Practice Specializations</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">100%</div>
+        <div class="stat-label">Project-Based</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">Certified</div>
+        <div class="stat-label">Workplace Readiness</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content Grid -->
+  <main class="container" id="training-paths">
+
+    <!-- ==================== CATEGORY 1 ==================== -->
+    <section class="category-section" id="creative-roles">
+      <div class="category-header">
+        <span class="category-id">DOMAIN 01 //</span>
+        <h2 class="category-title">Creative & Content Roles</h2>
+        <p class="category-desc">Focuses on high-retention media editing, content marketing, and aesthetic layouts to drive audience growth.</p>
+      </div>
+
+      <div class="cards-grid">
+        <!-- Card 1 -->
+        <article class="card" id="card-video-editor">
+          <div class="card-top">
+            <div class="card-header-row">
+              <div class="card-icon-container">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="6" cy="6" r="3"></circle>
+                  <circle cx="6" cy="18" r="3"></circle>
+                  <line x1="20" y1="4" x2="8.12" y2="15.88"></line>
+                  <line x1="14.47" y1="14.48" x2="20" y2="20"></line>
+                  <line x1="8.12" y1="8.12" x2="12" y2="12"></line>
+                </svg>
+              </div>
+              <span class="card-number">01 / 15</span>
+            </div>
+
+            <h3 class="card-title">Short-Form Video Editor</h3>
+
+            <div class="card-badge">
+              <svg class="badge-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+              <span>3 DAYS PRACTICE</span>
+            </div>
+
+            <div class="card-features">
+              <div class="card-feature">
+                <span class="feature-check">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10" fill="rgba(16, 185, 129, 0.1)"></circle>
+                    <polyline points="16 9 11 14 8 11"></polyline>
+                  </svg>
+                </span>
+                <div class="feature-text">
+                  <strong>WHAT YOU LEARN:</strong> How to take long videos and cut them into short, vertical clips for TikTok, Instagram Reels, and YouTube Shorts.
+                </div>
+              </div>
+
+              <div class="card-feature">
+                <span class="feature-check">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10" fill="rgba(16, 185, 129, 0.1)"></circle>
+                    <polyline points="16 9 11 14 8 11"></polyline>
+                  </svg>
+                </span>
+                <div class="feature-text">
+                  <strong>PRACTICE PROJECT:</strong> Take a 10-minute interview video, cut it down to a 45-second highlight clip, remove silences, and add subtitles.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tools-container">
+            <div class="tools-label">Toolkit</div>
+            <div class="tools-list">
+              <span class="tool-tag">CapCut</span>
+              <span class="tool-tag">Adobe Premiere Pro</span>
+            </div>
+          </div>
+
+          <a href="#contact" class="card-btn">CHOOSE THIS PATH</a>
+        </article>
+
+        <!-- Card 2 -->
+        <article class="card" id="card-social-media">
+          <div class="card-top">
+            <div class="card-header-row">
+              <div class="card-icon-container">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                  <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+                </svg>
+              </div>
+              <span class="card-number">02 / 15</span>
+            </div>
+
+            <h3 class="card-title">Social Media Assistant</h3>
+
+            <div class="card-badge">
+              <svg class="badge-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+              <span>1 WEEK PRACTICE</span>
+            </div>
+
+            <div class="card-features">
+              <div class="card-feature">
+                <span class="feature-check">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10" fill="rgba(16, 185, 129, 0.1)"></circle>
+                    <polyline points="16 9 11 14 8 11"></polyline>
+                  </svg>
+                </span>
+                <div class="feature-text">
+                  <strong>WHAT YOU LEARN:</strong> How to plan, write, and automatically schedule posts for a business page so it stays active without manual daily uploading.
+                </div>
+              </div>
+
+              <div class="card-feature">
+                <span class="feature-check">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10" fill="rgba(16, 185, 129, 0.1)"></circle>
+                    <polyline points="16 9 11 14 8 11"></polyline>
+                  </svg>
+                </span>
+                <div class="feature-text">
+                  <strong>PRACTICE PROJECT:</strong> Create a 7-day post calendar for a business client, including the images (using templates) and the text captions with relevant hashtags.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tools-container">
+            <div class="tools-label">Toolkit</div>
+            <div class="tools-list">
+              <span class="tool-tag">Meta Business Suite</span>
+              <span class="tool-tag">Buffer</span>
+            </div>
+          </div>
+
+          <a href="#contact" class="card-btn">CHOOSE THIS PATH</a>
+        </article>
+
+        <!-- Card 3 -->
+        <article class="card" id="card-caption-writer">
+          <div class="card-top">
+            <div class="card-header-row">
+              <div class="card-icon-container">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 20h9"></path>
+                  <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
+                </svg>
+              </div>
+              <span class="card-number">03 / 15</span>
+            </div>
+
+            <h3 class="card-title">Content & Caption Writer</h3>
+
+            <div class="card-badge">
+              <svg class="badge-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+              <span>3-5 DAYS PRACTICE</span>
+            </div>
+
+            <div class="card-features">
+              <div class="card-feature">
+                <span class="feature-check">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10" fill="rgba(16, 185, 129, 0.1)"></circle>
+                    <polyline points="16 9 11 14 8 11"></polyline>
+                  </svg>
+                </span>
+                <div class="feature-text">
+                  <strong>WHAT YOU LEARN:</strong> How to write helpful articles, blog posts, and emails that match the client's brand voice and rank well on Google search.
+                </div>
+              </div>
+
+              <div class="card-feature">
+                <span class="feature-check">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10" fill="rgba(16, 185, 129, 0.1)"></circle>
+                    <polyline points="16 9 11 14 8 11"></polyline>
+                  </svg>
+                </span>
+                <div class="feature-text">
+                  <strong>PRACTICE PROJECT:</strong> Write a 500-word blog post answering an industry question, plus a short email newsletter promoting it.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tools-container">
+            <div class="tools-label">Toolkit</div>
+            <div class="tools-list">
+              <span class="tool-tag">Google Docs</span>
+              <span class="tool-tag">Claude AI</span>
+            </div>
+          </div>
+
+          <a href="#contact" class="card-btn">CHOOSE THIS PATH</a>
+        </article>
+
+        <!-- Card 4 -->
+        <article class="card" id="card-podcast-assistant">
+          <div class="card-top">
+            <div class="card-header-row">
+              <div class="card-icon-container">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
+                  <path d="M19 10v1a7 7 0 0 1-14 0v-1"></path>
+                  <line x1="12" y1="19" x2="12" y2="23"></line>
+                  <line x1="8" y1="23" x2="16" y2="23"></line>
+                </svg>
+              </div>
+              <span class="card-number">04 / 15</span>
+            </div>
+
+            <h3 class="card-title">Podcast Assistant</h3>
+
+            <div class="card-badge">
+              <svg class="badge-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+              <span>1 WEEK PRACTICE</span>
+            </div>
+
+            <div class="card-features">
+              <div class="card-feature">
+                <span class="feature-check">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10" fill="rgba(16, 185, 129, 0.1)"></circle>
+                    <polyline points="16 9 11 14 8 11"></polyline>
+                  </svg>
+                </span>
+                <div class="feature-text">
+                  <strong>WHAT YOU LEARN:</strong> How to handle the background work for online audio shows, including basic audio cleaning, writing summaries, and uploading.
+                </div>
+              </div>
+
+              <div class="card-feature">
+                <span class="feature-check">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10" fill="rgba(16, 185, 129, 0.1)"></circle>
+                    <polyline points="16 9 11 14 8 11"></polyline>
+                  </svg>
+                </span>
+                <div class="feature-text">
+                  <strong>PRACTICE PROJECT:</strong> Take a raw audio file, remove background hums/breaths, write a short episode summary, and format it.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tools-container">
+            <div class="tools-label">Toolkit</div>
+            <div class="tools-list">
+              <span class="tool-tag">Descript</span>
+              <span class="tool-tag">Audacity</span>
+            </div>
+          </div>
+
+          <a href="#contact" class="card-btn">CHOOSE THIS PATH</a>
+        </article>
+
+        <!-- Card 5 -->
+        <article class="card" id="card-visual-designer">
+          <div class="card-top">
+            <div class="card-header-row">
+              <div class="card-icon-container">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 14.7255 3.09032 17.1962 4.85857 19C5.34731 19.4887 5.59168 19.7331 5.8118 19.8227C6.00511 19.9015 6.13645 19.9197 6.34005 19.9238C6.57187 19.9284 6.8837 19.8037 7.50736 19.5542C8.1259 19.3068 8.43517 19.1831 8.74601 19.231C9.01905 19.2731 9.24584 19.4173 9.42398 19.6263C9.62688 19.8643 9.69984 20.1691 9.84577 20.7788C10.0135 21.4795 10.0974 21.8299 10.3541 21.9427C10.5794 22.0417 10.8523 22.0417 11.0776 21.9427C11.3343 21.8299 11.4182 21.4795 11.5859 20.7788C11.5859 20.7788 11.5859 20.7788 11.5859 20.7788Z"></path>
+                  <circle cx="7.5" cy="10.5" r="1.5"></circle>
+                  <circle cx="11.5" cy="7.5" r="1.5"></circle>
+                  <circle cx="16.5" cy="9.5" r="1.5"></circle>
+                </svg>
+              </div>
+              <span class="card-number">05 / 15</span>
+            </div>
+
+            <h3 class="card-title">Visual Asset Designer</h3>
+
+            <div class="card-badge">
+              <svg class="badge-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+              <span>3 DAYS PRACTICE</span>
+            </div>
+
+            <div class="card-features">
+              <div class="card-feature">
+                <span class="feature-check">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10" fill="rgba(16, 185, 129, 0.1)"></circle>
+                    <polyline points="16 9 11 14 8 11"></polyline>
+                  </svg>
+                </span>
+                <div class="feature-text">
+                  <strong>WHAT YOU LEARN:</strong> How to use design layouts and color schemes to create clean presentations, digital flyers, and multi-page PDF guides.
+                </div>
+              </div>
+
+              <div class="card-feature">
+                <span class="feature-check">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10" fill="rgba(16, 185, 129, 0.1)"></circle>
+                    <polyline points="16 9 11 14 8 11"></polyline>
+                  </svg>
+                </span>
+                <div class="feature-text">
+                  <strong>PRACTICE PROJECT:</strong> Design a 5-page digital guidebook or a 10-slide presentation using a client's specific colors and fonts.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tools-container">
+            <div class="tools-label">Toolkit</div>
+            <div class="tools-list">
+              <span class="tool-tag">Canva Pro</span>
+            </div>
+          </div>
+
+          <a href="#contact" class="card-btn">CHOOSE THIS PATH</a>
+        </article>
+      </div>
+    </section>
+
+    <!-- ==================== CATEGORY 2 ==================== -->
+    <section class="category-section" id="sales-roles">
+      <div class="category-header">
+        <span class="category-id">DOMAIN 02 //</span>
+        <h2 class="category-title">Sales & Marketing Operations</h2>
+        <p class="category-desc">Focuses on building business pipelines through structural lead acquisition, email automations, and audience qualification.</p>
+      </div>
+
+      <div class="cards-grid">
+        <!-- Card 6 -->
+        <article class="card" id="card-lead-gen">
+          <div class="card-top">
+            <div class="card-header-row">
+              <div class="card-icon-container">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="11" cy="11" r="8"></circle>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+              </div>
+              <span class="card-number">06 / 15</span>
+            </div>
+
+            <h3 class="card-title">B2B Lead Generation Specialist</h3>
+
+            <div class="card-badge">
+              <svg class="badge-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+              <span>1 WEEK PRACTICE</span>
+            </div>
+
+            <div class="card-features">
+              <div class="card-feature">
+                <span class="feature-check">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10" fill="rgba(16, 185, 129, 0.1)"></circle>
+                    <polyline points="16 9 11 14 8 11"></polyline>
+                  </svg>
+                </span>
+                <div class="feature-text">
+                  <strong>WHAT YOU LEARN:</strong> How to research online directories and databases to find the contact information of specific business owners who might want to buy your client's services.
+                </div>
+              </div>
+
+              <div class="card-feature">
+                <span class="feature-check">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10" fill="rgba(16, 185, 129, 0.1)"></circle>
+                    <polyline points="16 9 11 14 8 11"></polyline>
+                  </svg>
+                </span>
+                <div class="feature-text">
+                  <strong>PRACTICE PROJECT:</strong> Find the names, job titles, and verified business emails of 50 company owners in a specific city and organize them into a clean spreadsheet.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tools-container">
+            <div class="tools-label">Toolkit</div>
+            <div class="tools-list">
+              <span class="tool-tag">Apollo.io</span>
+              <span class="tool-tag">Hunter.io</span>
+            </div>
+          </div>
+
+          <a href="#contact" class="card-btn">CHOOSE THIS PATH</a>
+        </article>
+
+        <!-- Card 7 -->
+        <article class="card" id="card-chat-assistant">
+          <div class="card-top">
+            <div class="card-header-row">
+              <div class="card-icon-container">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                </svg>
+              </div>
+              <span class="card-number">07 / 15</span>
+            </div>
+
+            <h3 class="card-title">Chat & DM Assistant</h3>
+
+            <div class="card-badge">
+              <svg class="badge-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+              <span>3-5 DAYS PRACTICE</span>
+            </div>
+
+            <div class="card-features">
+              <div class="card-feature">
+                <span class="feature-check">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10" fill="rgba(16, 185, 129, 0.1)"></circle>
+                    <polyline points="16 9 11 14 8 11"></polyline>
+                  </svg>
+                </span>
+                <div class="feature-text">
+                  <strong>WHAT YOU LEARN:</strong> How to manage business message inboxes, answer customer inquiries professionally, and guide interested people to book a call with the owner.
+                </div>
+              </div>
+
+              <div class="card-feature">
+                <span class="feature-check">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10" fill="rgba(16, 185, 129, 0.1)"></circle>
+                    <polyline points="16 9 11 14 8 11"></polyline>
+                  </svg>
+                </span>
+                <div class="feature-text">
+                  <strong>PRACTICE PROJECT:</strong> Handle a simulated customer chat conversation, answer objections using a script, and send a calendar booking link.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tools-container">
+            <div class="tools-label">Toolkit</div>
+            <div class="tools-list">
+              <span class="tool-tag">ManyChat</span>
+              <span class="tool-tag">Slack</span>
+            </div>
+          </div>
+
+          <a href="#contact" class="card-btn">CHOOSE THIS PATH</a>
+        </article>
+
+        <!-- Card 8 -->
+        <article class="card" id="card-email-marketing">
+          <div class="card-top">
+            <div class="card-header-row">
+              <div class="card-icon-container">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                  <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+              </div>
+              <span class="card-number">08 / 15</span>
+            </div>
+
+            <h3 class="card-title">Email Marketing Assistant</h3>
+
+            <div class="card-badge">
+              <svg class="badge-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+              <span>1 WEEK PRACTICE</span>
+            </div>
+
+            <div class="card-features">
+              <div class="card-feature">
+                <span class="feature-check">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10" fill="rgba(16, 185, 129, 0.1)"></circle>
+                    <polyline points="16 9 11 14 8 11"></polyline>
+                  </svg>
+                </span>
+                <div class="feature-text">
+                  <strong>WHAT YOU LEARN:</strong> How to organize lists of email subscribers and set up automated marketing emails that go out to customers who leave items in their shopping carts.
+                </div>
+              </div>
+
+              <div class="card-feature">
+                <span class="feature-check">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10" fill="rgba(16, 185, 129, 0.1)"></circle>
+                    <polyline points="16 9 11 14 8 11"></polyline>
+                  </svg>
+                </span>
+                <div class="feature-text">
+                  <strong>PRACTICE PROJECT:</strong> Set up a 3-part automated email sequence inside an email platform that triggers when a customer subscribes.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tools-container">
+            <div class="tools-label">Toolkit</div>
+            <div class="tools-list">
+              <span class="tool-tag">Klaviyo</span>
+              <span class="tool-tag">Mailchimp</span>
+            </div>
+          </div>
+
+          <a href="#contact" class="card-btn">CHOOSE THIS PATH</a>
+        </article>
+      </div>
+    </section>
+
+    <!-- ==================== CATEGORY 3 ==================== -->
+    <section class="category-section" id="industry-roles">
+      <div class="category-header">
+        <span class="category-id">DOMAIN 03 //</span>
+        <h2 class="category-title">Industry Specific Roles</h2>
+        <p class="category-desc">Focuses on technical operations specialized for real estate management, medical admin, e-commerce, legal operations, and bookkeeping.</p>
+      </div>
+
+      <div class="cards-grid">
+        <!-- Card 9 -->
+        <article class="card" id="card-real-estate">
+          <div class="card-top">
+            <div class="card-header-row">
+              <div class="card-icon-container">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                  <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                </svg>
+              </div>
+              <span class="card-number">09 / 15</span>
+            </div>
+
+            <h3 class="card-title">Real Estate Admin Assistant</h3>
+
+            <div class="card-badge">
+              <svg class="badge-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+              <span>1 WEEK PRACTICE</span>
+            </div>
+
+            <div class="card-features">
+              <div class="card-feature">
+                <span class="feature-check">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10" fill="rgba(16, 185, 129, 0.1)"></circle>
+                    <polyline points="16 9 11 14 8 11"></polyline>
+                  </svg>
+                </span>
+                <div class="feature-text">
+                  <strong>WHAT YOU LEARN:</strong> How to support real estate agents by updating property listings online, managing customer files, and tracking transaction deadlines.
+                </div>
+              </div>
+
+              <div class="card-feature">
+                <span class="feature-check">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10" fill="rgba(16, 185, 129, 0.1)"></circle>
+                    <polyline points="16 9 11 14 8 11"></polyline>
+                  </svg>
+                </span>
+                <div class="feature-text">
+                  <strong>PRACTICE PROJECT:</strong> Input a mock property listing into a real estate tracker and set up tasks required before a house sale closes.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tools-container">
+            <div class="tools-label">Toolkit</div>
+            <div class="tools-list">
+              <span class="tool-tag">Follow Up Boss</span>
+              <span class="tool-tag">Zillow</span>
+            </div>
+          </div>
+
+          <a href="#contact" class="card-btn">CHOOSE THIS PATH</a>
+        </article>
+
+        <!-- Card 10 -->
+        <article class="card" id="card-medical-va">
+          <div class="card-top">
+            <div class="card-header-row">
+              <div class="card-icon-container">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+                </svg>
+              </div>
+              <span class="card-number">10 / 15</span>
+            </div>
+
+            <h3 class="card-title">Medical VA</h3>
+
+            <div class="card-badge">
+              <svg class="badge-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+              <span>1-2 WEEKS PRACTICE</span>
+            </div>
+
+            <div class="card-features">
+              <div class="card-feature">
+                <span class="feature-check">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10" fill="rgba(16, 185, 129, 0.1)"></circle>
+                    <polyline points="16 9 11 14 8 11"></polyline>
+                  </svg>
+                </span>
+                <div class="feature-text">
+                  <strong>WHAT YOU LEARN:</strong> How to assist overseas doctors by managing patient appointments, verifying health insurance, and updating medical records securely.
+                </div>
+              </div>
+
+              <div class="card-feature">
+                <span class="feature-check">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10" fill="rgba(16, 185, 129, 0.1)"></circle>
+                    <polyline points="16 9 11 14 8 11"></polyline>
+                  </svg>
+                </span>
+                <div class="feature-text">
+                  <strong>PRACTICE PROJECT:</strong> Listen to a recorded doctor-patient consultation and accurately type out medical notes into a standard health record format.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tools-container">
+            <div class="tools-label">Toolkit</div>
+            <div class="tools-list">
+              <span class="tool-tag">Practice Fusion</span>
+            </div>
+          </div>
+
+          <a href="#contact" class="card-btn">CHOOSE THIS PATH</a>
+        </article>
+
+        <!-- Card 11 -->
+        <article class="card" id="card-ecommerce">
+          <div class="card-top">
+            <div class="card-header-row">
+              <div class="card-icon-container">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                  <line x1="3" y1="6" x2="21" y2="6"></line>
+                  <path d="M16 10a4 4 0 0 1-8 0"></path>
+                </svg>
+              </div>
+              <span class="card-number">11 / 15</span>
+            </div>
+
+            <h3 class="card-title">E-Commerce Store Assistant</h3>
+
+            <div class="card-badge">
+              <svg class="badge-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+              <span>1-2 WEEKS PRACTICE</span>
+            </div>
+
+            <div class="card-features">
+              <div class="card-feature">
+                <span class="feature-check">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10" fill="rgba(16, 185, 129, 0.1)"></circle>
+                    <polyline points="16 9 11 14 8 11"></polyline>
+                  </svg>
+                </span>
+                <div class="feature-text">
+                  <strong>WHAT YOU LEARN:</strong> How to run backend operations of online shops, including adding new products, tracking stock, and handling refunds.
+                </div>
+              </div>
+
+              <div class="card-feature">
+                <span class="feature-check">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10" fill="rgba(16, 185, 129, 0.1)"></circle>
+                    <polyline points="16 9 11 14 8 11"></polyline>
+                  </svg>
+                </span>
+                <div class="feature-text">
+                  <strong>PRACTICE PROJECT:</strong> Create a complete product listing on a website, including variations (size/color), pricing, and shipping descriptions.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tools-container">
+            <div class="tools-label">Toolkit</div>
+            <div class="tools-list">
+              <span class="tool-tag">Shopify</span>
+              <span class="tool-tag">Amazon Seller Central</span>
+            </div>
+          </div>
+
+          <a href="#contact" class="card-btn">CHOOSE THIS PATH</a>
+        </article>
+
+        <!-- Card 12 -->
+        <article class="card" id="card-bookkeeper">
+          <div class="card-top">
+            <div class="card-header-row">
+              <div class="card-icon-container">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="12" y1="1" x2="12" y2="23"></line>
+                  <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                </svg>
+              </div>
+              <span class="card-number">12 / 15</span>
+            </div>
+
+            <h3 class="card-title">Digital Bookkeeper</h3>
+
+            <div class="card-badge">
+              <svg class="badge-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+              <span>1-2 WEEKS PRACTICE</span>
+            </div>
+
+            <div class="card-features">
+              <div class="card-feature">
+                <span class="feature-check">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10" fill="rgba(16, 185, 129, 0.1)"></circle>
+                    <polyline points="16 9 11 14 8 11"></polyline>
+                  </svg>
+                </span>
+                <div class="feature-text">
+                  <strong>WHAT YOU LEARN:</strong> How to record daily business expenses, create client invoices, and make sure bank statements match accounting records.
+                </div>
+              </div>
+
+              <div class="card-feature">
+                <span class="feature-check">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10" fill="rgba(16, 185, 129, 0.1)"></circle>
+                    <polyline points="16 9 11 14 8 11"></polyline>
+                  </svg>
+                </span>
+                <div class="feature-text">
+                  <strong>PRACTICE PROJECT:</strong> Take 20 business transactions, categorize them correctly, and generate a monthly profit & loss report.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tools-container">
+            <div class="tools-label">Toolkit</div>
+            <div class="tools-list">
+              <span class="tool-tag">QuickBooks Online</span>
+              <span class="tool-tag">Xero</span>
+            </div>
+          </div>
+
+          <a href="#contact" class="card-btn">CHOOSE THIS PATH</a>
+        </article>
+
+        <!-- Card 13 -->
+        <article class="card" id="card-legal-assistant">
+          <div class="card-top">
+            <div class="card-header-row">
+              <div class="card-icon-container">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                </svg>
+              </div>
+              <span class="card-number">13 / 15</span>
+            </div>
+
+            <h3 class="card-title">Legal Virtual Assistant</h3>
+
+            <div class="card-badge">
+              <svg class="badge-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+              <span>1 WEEK PRACTICE</span>
+            </div>
+
+            <div class="card-features">
+              <div class="card-feature">
+                <span class="feature-check">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10" fill="rgba(16, 185, 129, 0.1)"></circle>
+                    <polyline points="16 9 11 14 8 11"></polyline>
+                  </svg>
+                </span>
+                <div class="feature-text">
+                  <strong>WHAT YOU LEARN:</strong> How to support lawyers by formatting formal legal letters, organizing digital case files, and routing documents for signature.
+                </div>
+              </div>
+
+              <div class="card-feature">
+                <span class="feature-check">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10" fill="rgba(16, 185, 129, 0.1)"></circle>
+                    <polyline points="16 9 11 14 8 11"></polyline>
+                  </svg>
+                </span>
+                <div class="feature-text">
+                  <strong>PRACTICE PROJECT:</strong> Format a raw document to match court layout rules (spacing, margins), and set up an electronic signature route.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tools-container">
+            <div class="tools-label">Toolkit</div>
+            <div class="tools-list">
+              <span class="tool-tag">Clio</span>
+              <span class="tool-tag">DocuSign</span>
+            </div>
+          </div>
+
+          <a href="#contact" class="card-btn">CHOOSE THIS PATH</a>
+        </article>
+      </div>
+    </section>
+
+    <!-- ==================== CATEGORY 4 ==================== -->
+    <section class="category-section" id="tech-roles">
+      <div class="category-header">
+        <span class="category-id">DOMAIN 04 //</span>
+        <h2 class="category-title">Tech & Automation Roles</h2>
+        <p class="category-desc">Focuses on technical automations, app integrations, API routing, and high-quality technical support operations.</p>
+      </div>
+
+      <div class="cards-grid">
+        <!-- Card 14 -->
+        <article class="card" id="card-automation">
+          <div class="card-top">
+            <div class="card-header-row">
+              <div class="card-icon-container">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                </svg>
+              </div>
+              <span class="card-number">14 / 15</span>
+            </div>
+
+            <h3 class="card-title">Tech Automation Assistant</h3>
+
+            <div class="card-badge">
+              <svg class="badge-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+              <span>1-2 WEEKS PRACTICE</span>
+            </div>
+
+            <div class="card-features">
+              <div class="card-feature">
+                <span class="feature-check">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10" fill="rgba(16, 185, 129, 0.1)"></circle>
+                    <polyline points="16 9 11 14 8 11"></polyline>
+                  </svg>
+                </span>
+                <div class="feature-text">
+                  <strong>WHAT YOU LEARN:</strong> How to connect software apps together so tasks happen automatically without a human having to copy-paste data manually.
+                </div>
+              </div>
+
+              <div class="card-feature">
+                <span class="feature-check">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10" fill="rgba(16, 185, 129, 0.1)"></circle>
+                    <polyline points="16 9 11 14 8 11"></polyline>
+                  </svg>
+                </span>
+                <div class="feature-text">
+                  <strong>PRACTICE PROJECT:</strong> Build an automation that takes web form data, creates a client database entry, and alerts the team chat.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tools-container">
+            <div class="tools-label">Toolkit</div>
+            <div class="tools-list">
+              <span class="tool-tag">Zapier</span>
+              <span class="tool-tag">Make</span>
+            </div>
+          </div>
+
+          <a href="#contact" class="card-btn">CHOOSE THIS PATH</a>
+        </article>
+
+        <!-- Card 15 -->
+        <article class="card" id="card-tech-support">
+          <div class="card-top">
+            <div class="card-header-row">
+              <div class="card-icon-container">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                  <line x1="8" y1="21" x2="16" y2="21"></line>
+                  <line x1="12" y1="17" x2="12" y2="21"></line>
+                </svg>
+              </div>
+              <span class="card-number">15 / 15</span>
+            </div>
+
+            <h3 class="card-title">Technical Support Assistant</h3>
+
+            <div class="card-badge">
+              <svg class="badge-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+              <span>1 WEEK PRACTICE</span>
+            </div>
+
+            <div class="card-features">
+              <div class="card-feature">
+                <span class="feature-check">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10" fill="rgba(16, 185, 129, 0.1)"></circle>
+                    <polyline points="16 9 11 14 8 11"></polyline>
+                  </svg>
+                </span>
+                <div class="feature-text">
+                  <strong>WHAT YOU LEARN:</strong> How to manage customer support systems, troubleshoot common software glitches, and record video guides to help users.
+                </div>
+              </div>
+
+              <div class="card-feature">
+                <span class="feature-check">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10" fill="rgba(16, 185, 129, 0.1)"></circle>
+                    <polyline points="16 9 11 14 8 11"></polyline>
+                  </svg>
+                </span>
+                <div class="feature-text">
+                  <strong>PRACTICE PROJECT:</strong> Review a mock support ticket, find the fix, and record a 60-second screen guide showcasing the solution.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tools-container">
+            <div class="tools-label">Toolkit</div>
+            <div class="tools-list">
+              <span class="tool-tag">Zendesk</span>
+              <span class="tool-tag">Loom</span>
+            </div>
+          </div>
+
+          <a href="#contact" class="card-btn">CHOOSE THIS PATH</a>
+        </article>
+      </div>
+    </section>
+
+    <!-- ==================== FAQ SECTION ==================== -->
+    <section class="faq-section" id="faq">
+      <div class="faq-grid">
+        <div>
+          <h2 class="faq-title">Frequently Asked Questions</h2>
+        </div>
+        <div class="faq-list">
+          <details class="faq-item">
+            <summary>
+              <h3 class="faq-question">Is Rockwell really 100% free?</h3>
+              <span class="faq-toggle-icon">
+                <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="6" y1="1" x2="6" y2="11"></line>
+                  <line x1="1" y1="6" x2="11" y2="6"></line>
+                </svg>
+              </span>
+            </summary>
+            <div class="faq-answer-container">
+              <p class="faq-answer">Yes, absolutely. Rockwell is completely free of charge. There are no hidden fees, subscriptions, or paywalls. It is a mission-driven portal designed to support Filipino talent in gaining industry-ready skills without any financial burden.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>
+              <h3 class="faq-question">Who is this portal made for?</h3>
+              <span class="faq-toggle-icon">
+                <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="6" y1="1" x2="6" y2="11"></line>
+                  <line x1="1" y1="6" x2="11" y2="6"></line>
+                </svg>
+              </span>
+            </summary>
+            <div class="faq-answer-container">
+              <p class="faq-answer">Rockwell is engineered specifically for Virtual Assistants (VAs) and remote professionals who want to transition into high-income, work-from-home (WFH) careers. Whether you are transitioning from corporate roles or leveling up your existing freelance skills, this portal is your training roadmap.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>
+              <h3 class="faq-question">Are the training certificates free as well?</h3>
+              <span class="faq-toggle-icon">
+                <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="6" y1="1" x2="6" y2="11"></line>
+                  <line x1="1" y1="6" x2="11" y2="6"></line>
+                </svg>
+              </span>
+            </summary>
+            <div class="faq-answer-container">
+              <p class="faq-answer">Yes! All certificates of completion are 100% free. Once you complete the specialization paths and standard portfolio projects, you can generate and share your certificates to prove your proficiency to potential global clients.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>
+              <h3 class="faq-question">What is the number one skill that premium foreign clients look for?</h3>
+              <span class="faq-toggle-icon">
+                <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="6" y1="1" x2="6" y2="11"></line>
+                  <line x1="1" y1="6" x2="11" y2="6"></line>
+                </svg>
+              </span>
+            </summary>
+            <div class="faq-answer-container">
+              <p class="faq-answer"><strong>Proactive communication.</strong> Premium clients do not want a robot who sits around silently waiting for daily instructions. Stand out by sending a quick check-in message every single morning detailing exactly what tasks you are starting on, and a summary message every evening showing your progress data logs.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>
+              <h3 class="faq-question">How should I handle making a critical mistake or error on a live client project?</h3>
+              <span class="faq-toggle-icon">
+                <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="6" y1="1" x2="6" y2="11"></line>
+                  <line x1="1" y1="6" x2="11" y2="6"></line>
+                </svg>
+              </span>
+            </summary>
+            <div class="faq-answer-container">
+              <p class="faq-answer"><strong>Never hide it, never delete data clues, and never ghost the client chat.</strong> Own the mistake instantly within the first 15 minutes of discovery. Message your client using this structure: acknowledge the error clearly, explain the immediate correction fix you are implementing right now, and state the step-by-step backup adjustment you have put in place to ensure it never happens again.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>
+              <h3 class="faq-question">Do I need an expensive high-end laptop or computer setup to land a premium VA role?</h3>
+              <span class="faq-toggle-icon">
+                <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="6" y1="1" x2="6" y2="11"></line>
+                  <line x1="1" y1="6" x2="11" y2="6"></line>
+                </svg>
+              </span>
+            </summary>
+            <div class="faq-answer-container">
+              <p class="faq-answer"><strong>No.</strong> Foreign clients care significantly more about operational reliability than flashy hardware. A baseline laptop with an Intel i5 processor and 8GB of RAM is perfectly fine. To truly stand out, focus on your infrastructure safety backups: have a pocket Wi-Fi device ready in case your main internet line goes down, and a secondary backup power bank station to handle unexpected electrical cuts.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>
+              <h3 class="faq-question">How do I present my work experiences if I have zero past remote agency history?</h3>
+              <span class="faq-toggle-icon">
+                <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="6" y1="1" x2="6" y2="11"></line>
+                  <line x1="1" y1="6" x2="11" y2="6"></line>
+                </svg>
+              </span>
+            </summary>
+            <div class="faq-answer-container">
+              <p class="faq-answer"><strong>Stop calling yourself a beginner and focus purely on your training data.</strong> Use a clean, black-and-white Harvard-style resume format. Instead of listing traditional employment history rows, build a prominent section titled "SELECTED ACADEMY PRACTICE PROJECTS" and detail the exact database sizes, video rendering metrics, and automation triggers you successfully completed inside the Rockwell modules.</p>
+            </div>
+          </details>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container footer-wrapper">
+      <div class="footer-brand">
+        <div class="footer-brand-logo">
+          <span class="brand-name">ROCKWELL</span>
+        </div>
+        <p class="footer-brand-text">Premium, industry-standard training matrices engineered to support Filipino virtual assistants in mastering high-income modern roles.</p>
+      </div>
+
+      <div class="footer-links-group">
+        <div class="footer-links">
+          <span class="footer-link-title">TRAINING DOMAINS</span>
+          <a href="#creative-roles" class="footer-link">Creative & Content</a>
+          <a href="#sales-roles" class="footer-link">Sales & Operations</a>
+          <a href="#industry-roles" class="footer-link">Industry Specific</a>
+          <a href="#tech-roles" class="footer-link">Tech & Automation</a>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <div class="copyright">
+        &copy; 2026 ROCKWELL GLOBAL WORKFORCE DEVELOPMENT. ALL RIGHTS RESERVED.
+      </div>
+      <div class="credit-tag" id="contact">
+        Designed for premium excellence by <a href="#" class="credit-tag-gold">ROCKWELL</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== INTERACTIVE LESSON PORTAL (HUD TAKEOVER) ==================== -->
+  <div id="lesson-screen" class="lesson-screen-container" style="display: none;">
+    <!-- Lesson Header -->
+    <header class="lesson-header">
+      <div class="lesson-header-wrapper">
+        <button id="btn-back-to-grid" class="btn-back" onclick="closeCourse()">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="19" y1="12" x2="5" y2="12"></line>
+            <polyline points="12 19 5 12 12 5"></polyline>
+          </svg>
+          <span>← Go Back to Training Options</span>
+        </button>
+        <span id="lesson-active-badge" class="active-course-badge">Creative & Content Domain</span>
+        <div class="lesson-progress-container">
+          <span id="lesson-progress-text" class="lesson-progress-text">Progress: 1 of 10 (10%)</span>
+          <div class="lesson-progress-bar-outer">
+            <div id="lesson-progress-bar-inner" class="lesson-progress-bar-inner"></div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Lesson Workspace Grid -->
+    <div class="lesson-layout">
+      <!-- Left Sidebar: 10 Lesson list -->
+      <aside class="lesson-sidebar">
+        <div class="lesson-sidebar-header">
+          <h4 id="sidebar-course-title" class="sidebar-title">Short-Form Video Editor</h4>
+          <p class="sidebar-subtitle">10-LESSON WORKPLACE MATRIX</p>
+        </div>
+        <div id="lesson-list-container" class="lesson-list">
+          <!-- Dynamic sidebar lesson items inserted here -->
+        </div>
+      </aside>
+
+      <!-- Right Area: Lesson Content Pane -->
+      <main id="lesson-content-pane" class="lesson-content-pane">
+        <!-- Dynamic lesson workspace inserted here -->
+      </main>
+    </div>
+  </div>
+
+  <!-- ==================== SCREEN 3: CERTIFICATE CLAIM FORM ==================== -->
+  <div id="claim-screen" class="lesson-screen-container" style="display: none; padding-bottom: 80px;">
+    <!-- Claim Header -->
+    <header class="lesson-header">
+      <div class="lesson-header-wrapper">
+        <button id="btn-back-to-lessons" class="btn-back" onclick="backToLessons()">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="19" y1="12" x2="5" y2="12"></line>
+            <polyline points="12 19 5 12 12 5"></polyline>
+          </svg>
+          <span>← Go Back to Lesson 10</span>
+        </button>
+        <span class="active-course-badge" style="background-color: rgba(233, 185, 73, 0.08); border-color: rgba(233, 185, 73, 0.2); color: var(--accent-gold);">Certificate Claim Portal</span>
+      </div>
+    </header>
+
+    <div class="container" style="max-width: 700px; margin: 40px auto; padding: 0 16px;">
+      <div style="background-color: var(--card-bg); border: 1px solid var(--accent-gold); border-radius: 8px; padding: 40px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+        <div style="width: 70px; height: 70px; background-color: rgba(233, 185, 73, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 24px auto; border: 1px solid rgba(233, 185, 73, 0.3);">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--accent-gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+          </svg>
+        </div>
+        
+        <h2 style="font-family: var(--font-display); font-size: 28px; font-weight: 700; color: var(--text-white); margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.05em;">Claim Your Certificate</h2>
+        <p style="color: var(--text-muted); font-size: 15px; line-height: 1.6; margin-bottom: 32px;">
+          Congratulations on mastering all 10 modules! Enter your details below to generate your official Rockwell Academy Certificate of Completion and transmit it instantly to your mailbox.
+        </p>
+
+        <!-- Static Web3Forms Integration Form -->
+        <form id="certificate-form" action="https://api.web3forms.com/submit" method="POST" onsubmit="handleCertificateSubmit(event)">
+          <!-- Hidden Web3Forms Access Key (Placeholder UUID for customization) -->
+          <input type="hidden" name="access_key" value="da23a7cf-e39d-4c31-97b7-6cc355df16a7">
+          <input type="hidden" name="subject" value="New Rockwell Certificate Generated!">
+          <input type="hidden" name="from_name" value="Rockwell Academy">
+          
+          <!-- Hidden Dynamic Inputs populated via JS -->
+          <input type="hidden" id="form-course-title" name="course_title" value="">
+          <input type="hidden" id="form-course-domain" name="course_domain" value="">
+
+          <div style="text-align: left; margin-bottom: 20px;">
+            <label for="student-name" style="display: block; font-family: var(--font-mono); font-size: 12px; font-weight: 600; color: var(--accent-gold); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px;">FULL NAME (Exactly as it should appear)</label>
+            <input type="text" id="student-name" name="student_name" placeholder="Juan Dela Cruz" required style="width: 100%; padding: 14px 16px; background-color: var(--bg-primary); border: 1px solid var(--card-border); border-radius: 4px; color: var(--text-white); font-size: 15px; outline: none; transition: border-color 0.25s;" onfocus="this.style.borderColor='var(--accent-gold)'" onblur="this.style.borderColor='var(--card-border)'">
+          </div>
+
+          <div style="text-align: left; margin-bottom: 32px;">
+            <label for="student-email" style="display: block; font-family: var(--font-mono); font-size: 12px; font-weight: 600; color: var(--accent-gold); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px;">EMAIL ADDRESS (For direct transmission)</label>
+            <input type="email" id="student-email" name="student_email" placeholder="juan@example.com" required style="width: 100%; padding: 14px 16px; background-color: var(--bg-primary); border: 1px solid var(--card-border); border-radius: 4px; color: var(--text-white); font-size: 15px; outline: none; transition: border-color 0.25s;" onfocus="this.style.borderColor='var(--accent-gold)'" onblur="this.style.borderColor='var(--card-border)'">
+          </div>
+
+          <button type="submit" class="btn-action-primary" style="width: 100%; padding: 16px; justify-content: center; font-size: 15px;">
+            GENERATE & SEND MY CERTIFICATE
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== SCREEN 4: INSTANT CERTIFICATE PREVIEW & SUCCESS SCREEN ==================== -->
+  <div id="certificate-screen" class="lesson-screen-container" style="display: none; padding-bottom: 80px;">
+    <!-- Certificate Header -->
+    <header class="lesson-header">
+      <div class="lesson-header-wrapper">
+        <button class="btn-back" onclick="closeCourse()">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="19" y1="12" x2="5" y2="12"></line>
+            <polyline points="12 19 5 12 12 5"></polyline>
+          </svg>
+          <span>← Back to Training Options</span>
+        </button>
+        <span class="active-course-badge" style="background-color: rgba(16, 185, 129, 0.08); border-color: rgba(16, 185, 129, 0.2); color: var(--accent-green);">Module Completed Successfully</span>
+      </div>
+    </header>
+
+    <div class="container" style="max-width: 1000px; margin: 40px auto; padding: 0 24px;">
+      <!-- Success Banner -->
+      <div style="background-color: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.2); border-radius: 8px; padding: 24px; text-align: center; margin-bottom: 40px;">
+        <span style="font-size: 40px; display: block; margin-bottom: 12px;">🎉</span>
+        <h3 style="font-family: var(--font-display); font-size: 20px; font-weight: 700; color: var(--text-white); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.05em;">Congratulations, Graduate!</h3>
+        <p id="success-message-text" style="color: var(--text-muted); font-size: 15px; line-height: 1.6; max-width: 700px; margin: 0 auto;">
+          Good luck and thank you for completing the module! Your official Rockwell certificate has been generated and is flying straight to your email inbox right now.
+        </p>
+      </div>
+
+      <!-- Live Certificate Frame Wrapper -->
+      <div style="overflow-x: auto; padding: 10px 0; display: flex; justify-content: center;">
+        <div class="certificate-frame">
+          <div class="certificate-inner-border">
+            
+            <!-- Top Section: Brand & Header -->
+            <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+              <div>
+                <h4 class="cert-title-brand" style="font-family: var(--font-display); font-size: 24px; font-weight: 900; color: #1E40AF; letter-spacing: 0.05em; margin-bottom: 2px;">ROCKWELL</h4>
+                <p style="font-family: var(--font-mono); font-size: 9px; color: #64748B; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700;">Global Workforce Development</p>
+              </div>
+              <div style="text-align: right; font-family: var(--font-mono); font-size: 10px; color: #64748B; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;">
+                OFFICIAL CREDENTIAL<br>ID: <span id="cert-security-id-header">RCWL-2026-X781B</span>
+              </div>
+            </div>
+
+            <!-- Middle Section: Credential Copy -->
+            <div style="text-align: center; margin: 20px 0;">
+              <p style="font-family: var(--font-mono); font-size: 12px; color: #3B82F6; font-weight: 700; text-transform: uppercase; letter-spacing: 0.2em; margin-bottom: 12px;">CERTIFICATE OF COMPLETION</p>
+              <p style="font-family: var(--font-sans); font-size: 14px; color: #64748B; font-style: italic; margin-bottom: 24px;">This certificate is proudly presented to</p>
+              
+              <!-- Recipient Name Overlay -->
+              <div style="position: relative; display: inline-block; width: 80%; margin-bottom: 24px;">
+                <h3 id="cert-recipient-name" class="cert-recipient-name" style="font-family: 'Great Vibes', 'Alex Brush', 'Playfair Display', Georgia, cursive; font-size: 48px; color: #0A0D14; font-weight: 500; text-align: center; margin: 0 auto; line-height: 1.2; border-bottom: 2px solid #1E40AF; padding-bottom: 8px;">Juan Dela Cruz</h3>
+              </div>
+
+              <!-- Main Body Text -->
+              <p id="cert-body-text" class="cert-body-text" style="font-family: var(--font-sans); font-size: 14px; color: #334155; line-height: 1.6; max-width: 680px; margin: 0 auto;">
+                For successfully completing the comprehensive training curriculum, hands-on portfolio projects, and mandatory core tool competencies for the <strong id="cert-dynamic-niche" style="color: #1E40AF; font-weight: 700;">Short-Form Video Editor</strong> specialization.
+              </p>
+            </div>
+
+            <!-- Footer: Signatures & Verification ID -->
+            <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-top: 16px;">
+              <!-- Left: Instructor Signature -->
+              <div style="width: 250px;">
+                <div style="font-family: 'Great Vibes', 'Alex Brush', cursive; font-size: 28px; color: #1E40AF; margin-bottom: -4px; padding-left: 10px;">Reby</div>
+                <div style="border-top: 1px solid #94A3B8; padding-top: 6px;">
+                  <h5 class="cert-signature-name" style="font-family: var(--font-sans); font-size: 12px; font-weight: 700; color: #1E40AF; margin-bottom: 2px;">Reby</h5>
+                  <p style="font-family: var(--font-sans); font-size: 10px; color: #64748B; font-weight: 500;">Founder & Head Instructor, Rockwell Academy</p>
+                </div>
+              </div>
+
+              <!-- Center Seal (Optional, but looks amazing!) -->
+              <div style="display: flex; align-items: center; justify-content: center; width: 80px; height: 80px; border: 2px dashed #3B82F6; border-radius: 50%; opacity: 0.85;">
+                <div style="width: 66px; height: 66px; background-color: #1E40AF; border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #FFFFFF; font-family: var(--font-display); font-weight: 900; font-size: 9px; text-transform: uppercase; letter-spacing: 0.05em; text-align: center; padding: 4px; box-shadow: 0 4px 10px rgba(30, 64, 175, 0.3);">
+                  OFFICIAL<br>SEAL
+                </div>
+              </div>
+
+              <!-- Right: Certificate Security ID -->
+              <div style="width: 250px; text-align: right;">
+                <div style="font-family: var(--font-mono); font-size: 11px; color: #0A0D14; font-weight: 700; margin-bottom: 6px; padding-right: 10px;" id="cert-security-id-body">RCWL-2026-X781B</div>
+                <div style="border-top: 1px solid #94A3B8; padding-top: 6px;">
+                  <h5 style="font-family: var(--font-sans); font-size: 10px; font-weight: 700; color: #64748B; text-transform: uppercase; letter-spacing: 0.05em;">Certificate Security ID</h5>
+                  <p style="font-family: var(--font-sans); font-size: 9px; color: #94A3B8; font-weight: 500;">Verified at rockwell.academy/verify</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- Action Area below Certificate -->
+      <div style="margin-top: 40px; display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;">
+        <button class="btn-action-primary" style="padding: 14px 28px;" onclick="window.print()">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 8px;">
+            <polyline points="6 9 6 2 18 2 18 9"></polyline>
+            <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+            <rect x="6" y="14" width="12" height="8"></rect>
+          </svg>
+          PRINT OR SAVE AS PDF
+        </button>
+        <button class="btn-action-secondary" style="padding: 14px 28px;" onclick="closeCourse()">
+          ← BACK TO TRAINING DASHBOARD
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Client-Side Curriculum Engine and View Switcher Script -->
+  <script>
+    // Comprehensive Database of All 15 Specialized Niches & 10-Lesson Matrices
+    const COURSE_SCHEMAS = {
+      "card-video-editor": {
+        title: "Short-Form Video Editor",
+        domain: "Creative & Content Domain",
+        tools: ["CapCut", "Adobe Premiere Pro", "Descript"],
+        lessons: [
+          { title: "Footage Intake, Syncing & Project Setup", task: "Import a raw 10-minute interview, align separate audio tracks via multi-cam syncing, and set vertical video properties.", deliverable: "Screenshot of the synchronized raw media bin and vertical multi-track timeline.", rubric: ["Timeline resolution is set to 1080x1920", "Audio tracks are synchronized with zero latency", "Media directories are named for graphics and raw footage"] },
+          { title: "Crafting the High-Impact Hook (First 3s)", task: "Isolate the most compelling 3-second statement, apply a dynamic scale shift (zoom cut), and overlay a high-contrast animated text hook.", deliverable: "A 3-second MP4 test export featuring the visual zoom, text hook, and subtle sound transition.", rubric: ["Hook starts instantly within the first 0.5 seconds", "Visual scale shift of 10-15% occurs precisely on the key word", "Overlay subtitles are legible and centered"] },
+          { title: "Pacing, Rough Cuts & Removing Dead Air", task: "Review the full clip, making frame-level cuts to remove silences, fillers (umms, ahhs), and speaker pauses.", deliverable: "Exported rough-cut timeline sequence with zero blank gaps.", rubric: ["All silent pauses greater than 0.2 seconds are cleanly cut", "Cuts do not clip spoken words", "Pacing feels punchy and high-velocity"] },
+          { title: "Captions, Typography, & Platform Safe Zones", task: "Apply auto-captions, manually correct spelling, and style the text using bold sans-serif fonts within mobile safe zones.", deliverable: "Exported draft video with customized, high-contrast subtitles.", rubric: ["Font is highly readable on small mobile screens", "Text sits within platform safe zones to avoid platform UI overlaps", "Grammar and capitalization are 100% correct"] },
+          { title: "B-Roll, Zoom Cuts, & Visual Pattern Interrupts", task: "Source high-quality b-roll clips and insert visual zoom scale shifts every 3 seconds to visually reinforce talking points.", deliverable: "Video file featuring contextual overlays and pattern-interrupt zoom cuts.", rubric: ["Visual shift or zoom occurs every 3-4 seconds", "B-roll is relevant and color-matched", "Overlays do not obscure speaker's face"] },
+          { title: "Sound Effects (SFX) & Audio Level Balancing", task: "Add context-appropriate sound effects (whooshes, pops, typing) and balance voiceover and background track decibel limits.", deliverable: "Audio-mixed master MP4 with balanced voice and sound effects.", rubric: ["Speaker vocals are clear and peak at -3dB", "Background music is limited to -18dB to -24dB", "Sound effects align perfectly with transitions"] },
+          { title: "Dynamic Pacing, Color Grading, & Style Filters", task: "Apply a subtle color grade to correct lighting exposure and increase color saturation for mobile screens.", deliverable: "Before-and-after color-graded comparison shots.", rubric: ["Skin tones remain natural and healthy", "Shadow detail is preserved without noise", "Color filters match client brand guidelines"] },
+          { title: "Export Optimization (Codecs & Bitrates)", task: "Configure export settings using H.264, VBR 2-pass bitrate, and AAC audio codec for modern social upload.", deliverable: "Optimized vertical MP4 under 50MB.", rubric: ["Resolution is exactly 1080x1920", "File format is MP4 with target bitrate between 15-20 Mbps", "Audio is export-compliant AAC at 320kbps"] },
+          { title: "Thumbnail Design & SEO Title SEO for Shorts", task: "Design a high-contrast thumbnail in Canva, and write a high-CTR title with relevant hashtags and keywords.", deliverable: "JPEG thumbnail and text document with title, description, and hashtags.", rubric: ["Thumbnail text is legible and captures immediate interest", "Title contains high-traffic keywords under 60 characters", "Hashtags are highly relevant to the niche category"] },
+          { title: "Portfolio Deliverable: The Final 60s Interview Highlight", task: "Synthesize all learned skills to deliver a publication-ready 60-second video from raw materials.", deliverable: "Link to your final, polished portfolio video asset.", rubric: ["Full workflow is executed flawlessly from hook to call-to-action", "No lag, stutters, or audio clipping is present", "Video contains custom branding, subtitles, and balanced mixing"] }
+        ]
+      },
+      "card-social-media": {
+        title: "Social Media Assistant",
+        domain: "Creative & Content Domain",
+        tools: ["Meta Business Suite", "Buffer", "Canva"],
+        lessons: [
+          { title: "Client Audit & Brand Identity Mapping", task: "Conduct a full brand audit of a client's social channels and map out brand colors, fonts, tone, and core offerings.", deliverable: "PDF Brand Identity Map sheet detailing colors, fonts, and guidelines.", rubric: ["Audit includes a complete competitor profile", "Visual assets identify primary brand color hex codes", "Tone guidelines detail acceptable and unacceptable phrases"] },
+          { title: "Competitor Analysis & Visual Layout Rules", task: "Analyze 3 competitor grids and establish a recurring visual grid layout strategy (e.g., checkerboard or row-by-row).", deliverable: "Grid Layout Strategy mockup with 9 sample post templates.", rubric: ["Layout scheme defines 3 distinct content types", "Competitor analysis identifies highest-engagement styles", "Canva master grid templates align with visual standards"] },
+          { title: "Developing a High-Conversion Content Pillar Strategy", task: "Create 4 distinct content pillars (e.g., educational, promotional, testimonial, behind-the-scenes) aligned with client objectives.", deliverable: "Content Pillar Blueprint document mapping pillars to business goals.", rubric: ["Pillars are clearly defined with unique sub-topics", "Content split allocates specific percentages to each pillar", "Visual prompts are mapped to each category"] },
+          { title: "Creating Grid Aesthetics with Canva Master Templates", task: "Design a cohesive 9-post grid in Canva utilizing established brand guidelines and custom vector elements.", deliverable: "Link to edit-ready Canva post templates.", rubric: ["Typography hierarchy is consistent across all 9 posts", "Brand color ratios are applied correctly", "Images use custom grids and high-quality borders"] },
+          { title: "SOP: Writing Post Captions with CTA Frameworks", task: "Write 5 engaging captions using various copywriting formulas (AIDA, PAS) with clear calls to action (CTAs).", deliverable: "Copywriting document containing hooks, body text, and custom CTAs.", rubric: ["Captions use spacing and emojis cleanly to increase readability", "Every post contains a strong, direct call-to-action", "Tone matches the mapping guidelines established in Lesson 1"] },
+          { title: "Hashtag Engineering & Social Platform SEO", task: "Research 30 relevant hashtags across low, medium, and high competition levels and write optimized alt-text for accessibility.", deliverable: "Hashtag matrix spreadsheet and alt-text descriptions for 5 visual posts.", rubric: ["Hashtag list is categorized by search volume and competitiveness", "Alt-text is descriptive and naturally incorporates keywords", "Alt-text complies with accessibility requirements"] },
+          { title: "Automated Scheduling Systems & Platform Setups", task: "Connect a simulated client account to Buffer or Meta Business Suite and set up weekly posting queues.", deliverable: "Screenshot of the active 7-day Buffer content queue.", rubric: ["Posting times are optimized for target audience activity", "Posts are successfully linked to correct social destinations", "Automated queues are correctly populated with captions and images"] },
+          { title: "Community Management & Comment Responses", task: "Write a standard operating procedure (SOP) for replying to positive, neutral, and negative client comments.", deliverable: "Community Management SOP Guide PDF.", rubric: ["Response templates handle customer complaints professionally", "Guidelines detail when to escalate a message to the client", "Tone is consistently warm, helpful, and brand-safe"] },
+          { title: "Performance Reporting: Tracking Vital Engagement Metrics", task: "Compile weekly analytics from social insights, tracking reach, impressions, follower growth, and click-throughs.", deliverable: "Completed Weekly Social Media Report sheet.", rubric: ["Data accurately calculates the weekly engagement rate", "Report includes actionable recommendations based on analytics", "Formatting is neat and matches corporate presentation standards"] },
+          { title: "Portfolio Deliverable: Complete 7-Day Social Campaign", task: "Design, write, and schedule a complete 7-day post campaign for a niche business client.", deliverable: "Link to your live or scheduled social media portfolio campaign.", rubric: ["All 7 posts are fully designed, written, and scheduled", "Campaign maintains brand identity and cohesive aesthetics", "Post strategy covers educational, promotional, and engagement goals"] }
+        ]
+      },
+      "card-caption-writer": {
+        title: "Content & Caption Writer",
+        domain: "Creative & Content Domain",
+        tools: ["Google Docs", "Claude AI", "Grammarly"],
+        lessons: [
+          { title: "Target Audience Profiling & Search Intent", task: "Define the Ideal Customer Profile (ICP) and identify key pain points to align copywriting copy.", deliverable: "Detailed Audience Profile Sheet outlining customer personas and needs.", rubric: ["Persona defines clear pain points and purchasing desires", "Search intent categories are identified for 3 core keywords", "Tone requirements are mapped to the demographic profile"] },
+          { title: "Keyword Research & Content Outlining", task: "Conduct a basic keyword research matrix and outline a 1,000-word blog post with optimized H2 and H3 tags.", deliverable: "Article Outline Google Doc link with structured headings.", rubric: ["Keywords are categorized by search volume and difficulty", "Headings naturally incorporate primary and secondary keywords", "Outline provides bullet points for every single section"] },
+          { title: "Writing Engaging Headlines & Introductory Hooks", task: "Draft 10 alternative headlines and a high-retention introductory paragraph using the 'PAS' framework.", deliverable: "Headlines list and a 150-word introduction section.", rubric: ["Headlines use persuasive writing triggers and power words", "Introduction hooks reader in the first 2 sentences", "Introduction flows naturally into the H2 content outline"] },
+          { title: "SOP: Structuring Long-Form Blog Content", task: "Draft a complete blog article body, implementing short paragraphs, bullet points, and high-readability formatting.", deliverable: "Link to your complete drafted Google Document article.", rubric: ["No paragraph exceeds 3 sentences to maximize readability", "Key points are formatted as bulleted lists", "Subheadings are structured logically to guide readers"] },
+          { title: "Designing Persuasive Social Media Captions", task: "Draft 3 social media captions (LinkedIn, Instagram) optimized for short-form reader engagement and shares.", deliverable: "Copywriting document featuring platform-tailored caption templates.", rubric: ["Instagram caption uses clear line breaks and line spacers", "LinkedIn post starts with a strong, scroll-stopping hook", "Captions contain clear CTAs and minimal hashtag clutter"] },
+          { title: "Email Copywriting: Newsletters & Click-Throughs", task: "Write a high-CTR promotional email campaign, including 3 variations of subject lines and clear click-through triggers.", deliverable: "Copywriting template for a 150-word promotional newsletter.", rubric: ["Subject lines are under 50 characters with open triggers", "Call-to-action button is positioned above the fold", "Email body uses a personal, conversational tone of voice"] },
+          { title: "AI-Assisted Workflows with Claude & Gemini", task: "Formulate custom system prompts to instruct AI engines to generate content in a specific brand tone of voice.", deliverable: "Prompt library document containing 3 custom persona prompts.", rubric: ["Prompts provide deep context, constraints, and reference text", "Generated output requires minimal manual proofreading", "Workflows include detailed self-editing protocols"] },
+          { title: "Editorial Editing & Brand Voice Checklists", task: "Perform a comprehensive proofread of a raw draft, checking for passive voice, wordiness, and alignment with brand voice guidelines.", deliverable: "Track-changes document displaying edited modifications.", rubric: ["Grammar, spelling, and punctuation errors are completely removed", "Readability score matches target audience reading level", "Active verbs replace passive structures wherever possible"] },
+          { title: "Publishing Basics: WordPress & Gutenberg Blocks", task: "Log into a demo WordPress site, paste an article, and configure alt-text, meta descriptions, and custom excerpt parameters.", deliverable: "Screenshot of the fully formatted draft editor inside WordPress.", rubric: ["Images contain descriptive, search-optimized alt-text", "Meta description contains target keywords under 155 characters", "Gutenberg blocks are styled with clean spacers and lists"] },
+          { title: "Portfolio Deliverable: Blog Post & Companion Campaign", task: "Assemble your blog article, social caption, and promotional email into a cohesive content delivery portfolio package.", deliverable: "Link to your completed content writing portfolio document.", rubric: ["All assets are polished, professional, and free of typos", "Cohesive brand messaging is maintained across all 3 formats", "Formatting matches premium agency standards"] }
+        ]
+      },
+      "card-podcast-assistant": {
+        title: "Podcast Assistant",
+        domain: "Creative & Content Domain",
+        tools: ["Descript", "Audacity", "Spotify for Podcasters"],
+        lessons: [
+          { title: "Podcast Platforms & Production Environments", task: "Register a demo account on Spotify for Podcasters and configure custom channel artwork, descriptions, and categories.", deliverable: "Screenshot of your fully configured podcast dashboard setup.", rubric: ["Channel description is keyword-rich and under 500 characters", "Categories match target listener demographics", "Social media handles are linked correctly"] },
+          { title: "Audio File Intake & File Integrity Diagnostics", task: "Establish a secure folder intake system and check incoming raw audio files for clipping, hums, and format compliance.", deliverable: "File Diagnostics Report listing raw audio format issues.", rubric: ["Directory folders are named by episode number and date", "Audio files are converted to high-quality WAV files", "Intake logs note exact volume peak levels"] },
+          { title: "Noise Reduction & Level Equalization", task: "Import raw audio into Audacity, apply noise reduction filters to remove ambient background hum, and normalize speaking volume.", deliverable: "Cleaned WAV audio sample before and after filter application.", rubric: ["Ambient room tone hum is minimized without distorting vocals", "Overall volume peak is set to -1dB to -2dB", "Noise floor sits comfortably below -50dB"] },
+          { title: "Editing for Flubs, Pauses, & Word Repetitions", task: "Isolate and delete speech errors, stutters, filler words (ums, like), and overly long pauses from the recording timeline.", deliverable: "Edited timeline WAV asset with zero spoken stutters.", rubric: ["Word transitions feel natural with seamless edit cuts", "All fillers are removed without clipping adjacent words", "Pacing remains steady and professional"] },
+          { title: "Intro, Outro & Mid-Roll Ad Insertion", task: "Incorporate client-provided intro tracks, outro calls-to-action, and mid-roll ad segments with smooth crossfades.", deliverable: "Combined audio sequence with transition crossfades.", rubric: ["Music intro fades under voice tracks smoothly", "Crossfade transitions last between 1.5 to 2.0 seconds", "Ad volume matches standard vocal volume levels"] },
+          { title: "ID3 Tagging & Metadata Configuration", task: "Configure the final MP3 file metadata including title, artist, album, track number, year, and cover art.", deliverable: "Screenshot of metadata tags in your MP3 inspector.", rubric: ["Metadata matches episode publishing schedule exactly", "Episode art is embedded directly into the MP3 container", "ID3 tags conform to international indexing standards"] },
+          { title: "Automated Transcription & Show Notes Drafts", task: "Upload edited audio to Descript, generate auto-transcripts, correct spelling errors, and write detailed show notes.", deliverable: "Episode Show Notes document featuring summary and timestamps.", rubric: ["Transcript contains correct spelling of guest names and tools", "Timestamps map accurately to key conversation shifts", "Summary contains a clear, compelling outline of topics"] },
+          { title: "Designing Promo Graphics & Audiograms", task: "Create promotional square graphics and a 30-second video audiogram with animated waveform overlays using Canva.", deliverable: "Audiogram video clip with active subtitles and animated wave.", rubric: ["Waveform animation syncs with the speaker's vocal tracks", "Fonts and color palettes match channel branding", "Export parameters are optimized for mobile feed feeds"] },
+          { title: "Publishing Workflows & Directory Syncing", task: "Create an episode draft inside your hosting dashboard, uploading show notes, MP3, cover art, and scheduling a launch time.", deliverable: "Screenshot of the scheduled episode inside Spotify panel.", rubric: ["Publishing date conforms to the client's campaign calendar", "Show notes contain relevant external links and references", "Episode titles are clear, concise, and click-worthy"] },
+          { title: "Portfolio Deliverable: Cleaned 5-Minute Episode", task: "Apply all editing, transcription, and administrative publishing protocols to produce a complete 5-minute episode package.", deliverable: "Link to your final edited episode and accompanying show notes.", rubric: ["Audio is clear of noise and stutters with balanced mixing", "Show notes feature clean timestamps and links", "Cover art and metadata are fully professional"] }
+        ]
+      },
+      "card-visual-designer": {
+        title: "Visual Asset Designer (Canva Expert)",
+        domain: "Creative & Content Domain",
+        tools: ["Canva Pro", "Adobe Express", "Figma"],
+        lessons: [
+          { title: "Design Principles, Contrast & Spacing", task: "Create a design system blueprint demonstrating visual hierarchy, contrast, margins, and professional safe zones.", deliverable: "Design Blueprint PDF demonstrating proper element spacing.", rubric: ["Margins are uniform and prevent element clipping", "Text and background satisfy accessibility contrast rules", "Hierarchy guides the reader's eye to the call-to-action first"] },
+          { title: "Brand Kit Assembly & Custom Palette Setup", task: "Create a complete client brand kit in Canva, configuring primary/secondary color hex codes, font styles, and vector logos.", deliverable: "Screenshot of your configured Canva Brand Kit dashboard.", rubric: ["Brand palette features clear primary, accent, and neutral tones", "Typography styles designate heading, subheading, and body fonts", "Logos are uploaded in transparent PNG and vector formats"] },
+          { title: "Social Feed Asset Layouts", task: "Design a high-engagement social feed template set (3 posts) utilizing custom shapes, shadows, and frame grids.", deliverable: "Link to edit-ready Canva template layouts.", rubric: ["Images fit cleanly within custom frame structures", "Text boxes use consistent letter-spacing and line-heights", "Visual elements align perfectly along grid snapping guides"] },
+          { title: "Creating Seamless Multi-Slide Carousels", task: "Design a continuous 5-slide LinkedIn/Instagram carousel where graphic elements transition across slide borders.", deliverable: "Link to your continuous Canva carousel design project.", rubric: ["Graphic transitions align across adjacent slides with pixel precision", "First slide features a compelling, high-contrast hook", "Final slide contains a direct, visual call-to-action element"] },
+          { title: "High-CTR YouTube Thumbnail Design", task: "Create 3 high-contrast YouTube thumbnails featuring transparent portrait cutouts, bold outlines, and minimal text overlay.", deliverable: "JPEG export of your high-click thumbnail layouts.", rubric: ["Thumbnail text is limited to 3-4 impactful words", "Background contrast makes foreground elements pop", "Text remains highly legible when scaled down to mobile sizes"] },
+          { title: "Corporate Assets: Business Stationery & Decks", task: "Design a matching business card, letterhead template, and a 5-slide corporate pitch deck conforming to client branding.", deliverable: "PDF document containing stationery and pitch deck designs.", rubric: ["Stationery designs contain clean, minimal contact block footers", "Pitch deck slides utilize varying layout structures to keep interest", "Branding remains consistent across both print and digital items"] },
+          { title: "Background Removal & Image Manipulation", task: "Erase complex backgrounds from raw portraits, clean edge imperfections, and insert transparent PNG assets into custom designs.", deliverable: "High-contrast promotional asset featuring clean portrait cutouts.", rubric: ["Cutout borders are smooth with zero background pixels remaining", "Portraits are color-corrected to blend with the new background", "Drop shadows are applied to create a realistic sense of depth"] },
+          { title: "Client Hand-Off & Shareable Templates", task: "Configure design permissions, locking background layers and setting up easy-to-use placeholder text for client edit access.", deliverable: "Link to your configured, client-ready shared template.", rubric: ["Background and branding assets are locked to prevent editing errors", "Placeholder text blocks are named clearly (e.g., EDIT_TITLE)", "Design features clean, well-organized layer groupings"] },
+          { title: "Export Specifications & Format Optimization", task: "Configure design export settings, outputting high-fidelity PDF prints, PNG social assets, and compressed JPG layouts.", deliverable: "Archive containing optimized exports in PDF Print, PNG, and JPG.", rubric: ["PDF prints are exported with bleed margins and CMYK colors", "PNG assets utilize maximum resolution and lossless saving", "JPG images are compressed for web pages without quality loss"] },
+          { title: "Portfolio Deliverable: Unified Branding Kit", task: "Assemble all designed visual assets into a premium brand presentation deck showcasing your visual capabilities.", deliverable: "Link to your final, complete design portfolio presentation.", rubric: ["Portfolio presentation is visually spectacular and coherent", "Every asset follows strict alignment and typography rules", "Branding feels unified, premium, and agency-ready"] }
+        ]
+      },
+      "card-lead-gen": {
+        title: "B2B Lead Generation Specialist",
+        domain: "Sales & Operations Domain",
+        tools: ["Hunter.io", "Apollo.io", "Google Sheets"],
+        lessons: [
+          { title: "ICP Definitions & Sourcing Target Niches", task: "Draft an Ideal Customer Profile (ICP) sheet outlining targeted industries, locations, revenue scales, and buyer personas.", deliverable: "ICP Definition Spreadsheet detailing lead requirements.", rubric: ["Niches are defined with precise industry codes and sizes", "Buyer personas designate target executive roles and titles", "Filtering parameters exclude irrelevant target demographics"] },
+          { title: "LinkedIn Prospecting & Executive Search Filters", task: "Configure search strings on LinkedIn using Boolean logic (AND, OR, NOT) to locate executive decision makers.", deliverable: "Sourcing sheet with 10 prospect profile links.", rubric: ["Search queries utilize nested Boolean syntax correctly", "Prospects match target buyer persona criteria", "Profiles are verified as active and industry-relevant"] },
+          { title: "Sourcing Local Businesses via Directories", task: "Mine local directories (Yelp, YellowPages, Clutch) to build a prospect database of target local service providers.", deliverable: "Google Sheets list of 15 brick-and-mortar prospects.", rubric: ["Spreadsheet contains business name, website, phone, and address", "Prospect directories represent active local service businesses", "Contact details are structured cleanly across rows"] },
+          { title: "Email Sourcing & Bulk Extract Verification", task: "Extract decision-maker emails using Apollo.io and verify email deliverability statuses utilizing Hunter.io.", deliverable: "B2B contact list featuring 25 verified professional emails.", rubric: ["Emails are verified as deliverable (green rating) in Hunter", "Prospect titles represent target decision-makers", "Duplicates are scrubbed from the active prospecting list"] },
+          { title: "Data Organization, Formatting & Cleansing", task: "Organize lead records, separating first and last names, capitalizing titles, and correcting website URLs in Google Sheets.", deliverable: "Link to your formatted, validated lead spreadsheet.", rubric: ["Names and job titles are properly capitalized with no typos", "All invalid domains or broken websites are scrubbed", "Data is segmented cleanly into dedicated column categories"] },
+          { title: "CRM Setup & Pipeline Mapping", task: "Create a free HubSpot developer account, set up lead stages, and import formatted lead data via CSV file.", deliverable: "Screenshot of the active lead pipeline panel in HubSpot.", rubric: ["Lead data columns map to corresponding CRM custom properties", "Pipeline stages reflect active outreach steps", "Lead records are assigned correctly with no data loss"] },
+          { title: "Formulating Cold Email Copy & Personalization Tags", task: "Draft a personalized cold outreach email template utilizing custom merge tags (First Name, Company, Pain Point).", deliverable: "Copywriting template document containing cold outreach copy.", rubric: ["Copy focuses on client benefits rather than sales pitches", "Subject line is personalized and under 6 words", "Merge tags are placed correctly within brackets"] },
+          { title: "Email Deliverability & Domain Warmup Basics", task: "Configure domain DNS settings checklist (SPF, DKIM, DMARC) and detail standard domain warmup protocols.", deliverable: "Domain Configuration Checklist PDF.", rubric: ["Checklist explains purpose of SPF, DKIM, and DMARC settings", "Warmup protocol outlines gradual email sending volume increases", "Outbox safety guidelines detail email spam limits"] },
+          { title: "Lead Generation Reporting & Performance Analytics", task: "Create a reporting dashboard template tracking total sent, opened, clicked, bounced, and interested lead metrics.", deliverable: "Completed lead generation performance tracking spreadsheet.", rubric: ["Open rates and reply percentages calculate automatically via formulas", "Visual charts map lead generation campaign performance", "Formatting is professional and ready for client reporting"] },
+          { title: "Portfolio Deliverable: Verified 50-Lead List", task: "Apply all prospecting, extraction, and verification techniques to deliver a 100% verified, duplicate-free lead list.", deliverable: "Link to your final, cleansed, 50-lead B2B database spreadsheet.", rubric: ["Database contains 50 verified contact records with zero bounces", "All fields are fully populated and formatted cleanly", "Leads match target client profile specifications"] }
+        ]
+      },
+      "card-chat-assistant": {
+        title: "Chat & DM Assistant",
+        domain: "Sales & Operations Domain",
+        tools: ["Slack", "Zendesk Chat", "Calendly"],
+        lessons: [
+          { title: "Inbox Organization & Fast Notifications", task: "Set up desktop and mobile notification alerts, email filters, and label systems for incoming client inquiries.", deliverable: "Inbox Organization Blueprint PDF outlining email filters.", rubric: ["Notification settings prioritize high-priority customer chats", "Label systems categorize inquiries by urgency level", "Filters route automated platform alerts out of main inbox"] },
+          { title: "Establishing Brand Tone & Response SLAs", task: "Create a brand voice style guide and establish target Service Level Agreements (SLAs) for chat response speeds.", deliverable: "Brand Voice & Chat SLA Guide PDF.", rubric: ["Tone guide details forbidden words and preferred phrasing", "SLAs set clear target response times for all chat channels", "Style guide contains standard greeting templates"] },
+          { title: "Managing Instagram & Facebook DM Chats", task: "Draft warm, helpful response templates for typical product and pricing inquiries received via social media direct messages.", deliverable: "Social Media DM Response Playbook document.", rubric: ["Templates sound natural and conversational rather than robotic", "Answers incorporate clear next-step calls-to-action", "Formatting uses spacing and emojis to fit social feeds"] },
+          { title: "SOP: Overcoming Pricing Objections & Hesitation", task: "Develop conversational scripts to handle budget concerns, product comparisons, and timing objections.", deliverable: "Objection Handling Script Guide containing responses.", rubric: ["Scripts validate customer concerns before offering solutions", "Answers naturally transition back to scheduling a discovery call", "Pricing explanations outline clear product value"] },
+          { title: "Booking Discovery Calls & Calendly Setup", task: "Configure a custom Calendly event with qualifying intake questions and set up automated meeting reminders.", deliverable: "Screenshot of the active Calendly booking setup panel.", rubric: ["Intake questions gather vital pre-call lead data", "Automated email/SMS reminders are scheduled", "Meeting duration and buffer times are set correctly"] },
+          { title: "Live Chat Dashboards & Zendesk Navigation", task: "Navigate a live chat interface, managing concurrent customer chats, assigning ticket priorities, and creating shortcut macros.", deliverable: "SOP document outlining live chat ticket tagging.", rubric: ["Tagging system categorizes tickets by product type", "Priority ratings match customer urgency scales", "Macros cover typical login and refund inquiries"] },
+          { title: "Internal Communication & Slack Escalation", task: "Draft professional internal escalation messages to route complex technical or billing inquiries to the core team.", deliverable: "escalation message templates for Slack channels.", rubric: ["Escalation messages contain full customer context and ticket links", "Tone is concise, professional, and action-oriented", "Messages designate clear priority and action items"] },
+          { title: "Tracking Response Speeds & Engagement Metrics", task: "Compile weekly performance charts tracking average first-response times, resolution speeds, and customer satisfaction.", deliverable: "Completed chat performance report spreadsheet.", rubric: ["Calculations correctly identify average chat durations", "Charts visualize daily ticket volume fluctuations", "Report outlines clear recommendations to improve satisfaction"] },
+          { title: "Managing High-Volume Chats & Inbox Auditing", task: "Conduct an audit of active chats, identifying resolved conversations, pending follow-ups, and open tickets.", deliverable: "Inbox Audit Checklist and status report.", rubric: ["Checklist ensures no customer message goes unanswered", "Status report outlines pending follow-up action items", "Audit cleans inactive tickets out of the main queue"] },
+          { title: "Portfolio Deliverable: Simulated DM Script", task: "Write a complete, realistic 15-turn chat transcript demonstrating successful lead qualification and Calendly booking.", deliverable: "Link to your final, polished chat transcript portfolio document.", rubric: ["Transcript flows naturally with high conversational quality", "All objections are handled seamlessly using scripts", "Conversation terminates with a successfully booked meeting link"] }
+        ]
+      },
+      "card-email-marketing": {
+        title: "Email Marketing Assistant",
+        domain: "Sales & Operations Domain",
+        tools: ["Mailchimp", "Klaviyo", "ActiveCampaign"],
+        lessons: [
+          { title: "Audience Segmentation & Tags Setup", task: "Create custom subscriber segments and configure tag categories based on customer signup sources and purchases.", deliverable: "Audience Segmentation Plan detailing custom tags.", rubric: ["Segments isolate active buyers from cold newsletter leads", "Tag naming structure tracks signup dates and campaigns", "Data fields include customer first name and location"] },
+          { title: "Formulating Signup Forms & Lead Magnet Delivery", task: "Design a high-converting website popup form and configure an automated email to deliver the promised lead magnet PDF.", deliverable: "Form design mockup and the introductory email copy.", rubric: ["Popup form is clean, minimal, and optimized for mobile screens", "Introductory email contains clear download links", "Automation trigger launches instantly on form submission"] },
+          { title: "Designing Mobile-Responsive Newsletter Campaigns", task: "Build a modern, single-column newsletter template in Mailchimp or Klaviyo following client branding guidelines.", deliverable: "Screenshot of your fully structured newsletter layout.", rubric: ["Layout is single-column for fast vertical scrolling on phones", "Images contain descriptive, search-optimized alt-text", "Primary call-to-action button is large and easy to tap"] },
+          { title: "Writing Compelling Subject Lines & A/B Testing", task: "Draft 5 pairs of A/B subject lines testing different psychological triggers (curiosity, urgency, personalization).", deliverable: "Subject Line testing matrix sheet.", rubric: ["Subject lines are under 50 characters to avoid truncation", "Preheader text complements the main subject line hook", "Testing parameters track exact open rate differences"] },
+          { title: "SOP: Newsletter Automated Launch Checklists", task: "Establish a comprehensive 10-point checklist to review before broadcasting any live email newsletter campaign.", deliverable: "Pre-Flight Email Launch Checklist PDF.", rubric: ["Checklist covers link validation, spelling, and image tests", "Sender details specify correct, brand-safe reply emails", "Plain-text backup configurations are fully detailed"] },
+          { title: "Klaviyo Flows: Abandoned Cart Setup", task: "Configure a 2-part automated abandoned cart flow, setting up delay triggers and personalized coupon codes.", deliverable: "Screenshot of the active Klaviyo flow builder sequence.", rubric: ["First email triggers exactly 1 hour after cart abandonment", "Second email is scheduled 24 hours later with an incentive", "Merge tags dynamically display the customer's cart items"] },
+          { title: "Welcome Automations & Drip Campaigns", task: "Build a 3-part automated welcome sequence introducing new subscribers to the brand, core values, and best-sellers.", deliverable: "Copywriting and flowchart document for a welcome sequence.", rubric: ["First email delivers the coupon/gift instantly", "Second email shares helpful brand content 2 days later", "Third email pitches best-selling products on day 4"] },
+          { title: "List Cleansing, Bounces, & Unsubscribe SOPs", task: "Write an SOP for handling soft and hard email bounces, cleansing inactive subscribers, and optimizing deliverability.", deliverable: "Email Deliverability SOP PDF.", rubric: ["Hard bounce addresses are permanently scrubbed from the active list", "Guidelines detail how to sunset subscribers who haven't opened emails in 90 days", "Unsubscribe links are verified as easy to locate in footers"] },
+          { title: "Analyzing Campaign Performance Reports", task: "Compile weekly email performance reports tracking open rates, click-through rates (CTR), and generated revenues.", deliverable: "Completed Email Analytics Report spreadsheet.", rubric: ["Metrics calculate unique click-to-open ratios correctly", "Visual charts track revenue generated per email campaign", "Report outlines strategic tweaks to boost click-throughs"] },
+          { title: "Portfolio Deliverable: 3-Part Automation Flow", task: "Design, write, and configure a complete 3-part Welcome Automation flow inside an email marketing platform.", deliverable: "Link to your final email marketing campaign portfolio project.", rubric: ["All 3 emails are fully written, designed, and structured", "Automated delay triggers are configured logically", "Formatting and branding match premium agency standards"] }
+        ]
+      },
+      "card-real-estate": {
+        title: "Real Estate Admin Assistant",
+        domain: "Industry Specific Domain",
+        tools: ["Zillow", "LionDesk", "Canva"],
+        lessons: [
+          { title: "Real Estate Roles, MLS, & Industry Basics", task: "Define primary real estate terminologies, MLS listing rules, and the transaction lifecycle stages.", deliverable: "Real Estate Admin Fundamentals sheet PDF.", rubric: ["Definitions cover escrow, contingencies, and disclosures", "MLS compliance parameters list mandatory listing photo ratios", "Transaction lifecycle stages are mapped sequentially"] },
+          { title: "Property Photo Sourcing & Directory Structuring", task: "Establish a clean digital folder structure to organize incoming listing photographs, virtual tours, and inspection reports.", deliverable: "Screenshot of your organized listing assets directory.", rubric: ["Directories separate raw photos, edited assets, and documents", "Photo files are renamed logically by address and room name", "Asset folders are shared securely via Google Drive"] },
+          { title: "SOP: Creating Property Listings on Zillow & MLS", task: "Draft a compelling property listing description and configure listing parameters (price, beds, baths) on a demo MLS site.", deliverable: "Listing Description copywriting asset and parameters sheet.", rubric: ["Description highlights primary home selling features under 200 words", "Listing details accurately match provided property documents", "MLS guidelines for keywords and compliance are satisfied"] },
+          { title: "Real Estate CRM Setups & Lead Follow-Up", task: "Configure contact categories and lead stages inside a real estate CRM such as LionDesk or kvCORE.", deliverable: "Screenshot of the active real estate pipeline setup in LionDesk.", rubric: ["Lead sources separate buyer inquiries from seller prospects", "Auto-responder templates are active for portal lead imports", "Contact records contain complete notes and activity logs"] },
+          { title: "Lead Inbound Scripts & Calendar Bookings", task: "Draft helpful phone scripts to handle inbound home inquiries and coordinate showing schedules on the agent's calendar.", deliverable: "Inbound Call Script Playbook document.", rubric: ["Scripts collect buyer qualifications before booking showings", "Calendar invitations contain showing instructions and property lockbox codes", "Follow-up reminders are automated for both agent and prospect"] },
+          { title: "SOP: Under-Contract Deadline Tracking Matrices", task: "Create a transaction coordinator tracking sheet listing key escrow dates, inspection deadlines, and closing milestones.", deliverable: "Active Under-Contract Tracking sheet link.", rubric: ["Escrow deadline dates calculate automatically based on contract terms", "Contingency milestones are highlighted for urgent review", "Contact details for escrow officers are logged in the tracker"] },
+          { title: "Designing Real Estate Marketing Flyers in Canva", task: "Design a double-sided 'Just Listed' real estate property flyer conforming to brokerage visual branding.", deliverable: "Link to edit-ready Canva property flyer template.", rubric: ["Flyer design displays high-resolution home interior photos", "Brokerage branding and licensing details are clearly visible", "Typography hierarchy places price and home features first"] },
+          { title: "Coordinating Showing Feedback Surveys", task: "Design a showing feedback survey for agents who toured the property with prospective buyer clients.", deliverable: "Feedback Survey link built in Google Forms.", rubric: ["Survey questions are short and gather vital pricing feedback", "Automated email invitations trigger immediately after showings", "Survey responses populate a shared tracking spreadsheet"] },
+          { title: "Preparing Comparative Market Analysis (CMA) Sheets", task: "Source 3 recently closed home sales in a target neighborhood and structure a CMA comparison spreadsheet.", deliverable: "Completed neighborhood CMA comparison sheet.", rubric: ["Comparable home sales are located within 1 mile of target home", "Price adjustments are calculated based on square footage differences", "Average market durations are outlined in the final report"] },
+          { title: "Portfolio Deliverable: Full Property Listing Launch Kit", task: "Assemble your listing copy, Canva flyers, showing feedback forms, and deadline tracking matrices into a property package.", deliverable: "Link to your final Real Estate Listing portfolio kit.", rubric: ["Listing package contains all 4 administrative modules", "Branding is consistent, professional, and brokerage-compliant", "All data represents an actual, meticulously planned home transaction"] }
+        ]
+      },
+      "card-medical-va": {
+        title: "Medical VA Foundations",
+        domain: "Industry Specific Domain",
+        tools: ["Practice Fusion", "Google Workspace", "Zoom"],
+        lessons: [
+          { title: "HIPAA Security, Patient Privacy & Compliance Rules", task: "Complete an intensive training module on HIPAA compliance rules, patient data security, and secure communication.", deliverable: "HIPAA Security SOP & Compliance Checklist PDF.", rubric: ["SOP outlines secure storage rules for medical files", "Guidelines detail what constitutes PHI (Protected Information)", "Checklist details password and portal safety rules"] },
+          { title: "Patient Registration & Intake Form Administration", task: "Configure patient intake form fields and organize submitted demographic sheets inside a secure client database.", deliverable: "Intake form template Built in Google Forms.", rubric: ["Intake form captures vital health histories and insurance details", "Patient privacy disclosures are prominent on the first page", "Submitted details are linked to a secure, restricted database"] },
+          { title: "Patient Appointment Coordination & Calendar Management", task: "Manage a multi-provider clinical calendar, scheduling patients, managing buffers, and setting appointment reminders.", deliverable: "Screenshot of your configured, patient-safe clinic calendar.", rubric: ["Appointments are color-coded by provider and visit type", "Sufficient buffer slots prevent appointment overlaps", "Reminders are scheduled to reduce patient no-show rates"] },
+          { title: "Electronic Health Record (EHR) Portals Setup", task: "Navigate a demo EHR portal (Practice Fusion), updating patient records, histories, and entering demographics.", deliverable: "Screenshot of the completed, safe patient file in Practice Fusion.", rubric: ["Patient demographics are entered with 100% accuracy", "Medical histories list current medications and drug allergies", "Record formats conform to EHR indexing rules"] },
+          { title: "Medical Billing: Insurance Terms & Eligibility Sourcing", task: "Verify health insurance eligibility, mapping copays, deductibles, and active coverage parameters for patients.", deliverable: "Completed Insurance Eligibility Verification worksheet.", rubric: ["Worksheet lists copays, deductibles, and active parameters", "Insurance codes are matched to corresponding coverage policies", "Notes detail pre-authorization requirements for clinical visits"] },
+          { title: "SOP: Medical Transcription - Voice to EHR", task: "Transcribe recorded clinical voice notes into organized EHR templates, checking spelling against medical dictation guides.", deliverable: "Transcript of a clinical voice consultation note.", rubric: ["Medical terms and drug names are spelled correctly", "Transcript is segmented into standardized SOAP note formats", "Patient identifiers are protected according to security rules"] },
+          { title: "Patient Interaction SOPs & Phone Etiquette Guides", task: "Draft a patient communications playbook detailing professional scripts for scheduling, questions, and complaint handling.", deliverable: "Patient Communications Playbook PDF.", rubric: ["Scripts maintain a compassionate, professional, and compliant tone", "Standard answers handle typical clinical FAQ inquiries", "Escalation procedures outline emergency contact steps"] },
+          { title: "Referral Letters & Laboratory Orders Administration", task: "Draft clinical referral letters to specialists and prepare lab order request sheets based on doctor instructions.", deliverable: "Referral Letter and Lab Order request template Google Doc.", rubric: ["Referral letter contains patient background summaries and reasons", "Lab orders list required testing panels clearly", "Provider signature placeholders are positioned correctly"] },
+          { title: "Managing Medical Inboxes & Administrative Tasks", task: "Organize clinical email accounts, filtering pharmacy notifications, referral letters, and patient questions.", deliverable: "Inbox Organization Guide detailing folder structures.", rubric: ["Filters prioritize urgent patient inquiries and pharmacy notifications", "Folder structures separate billing sheets, lab results, and referrals", "Auto-responders provide emergency medical contact numbers"] },
+          { title: "Portfolio Deliverable: Transcribing Doctor Consultation Notes", task: "Transcribe a full doctor-patient clinical recording into a compliant SOAP health record template.", deliverable: "Link to your final Medical VA portfolio SOAP note document.", rubric: ["SOAP note sections are complete and accurate", "HIPAA rules are satisfied with no real PHI exposed", "Spelling and medical terminology are 100% correct"] }
+        ]
+      },
+      "card-ecommerce": {
+        title: "E-Commerce Store Management",
+        domain: "Sales & Operations Domain",
+        tools: ["Shopify Admin", "Amazon Seller Central", "Oberlo"],
+        lessons: [
+          { title: "E-Commerce Systems, Shopify, & Amazon Dashboards", task: "Configure a Shopify developer store, setting up checkout parameters, shipping structures, and tax rules.", deliverable: "Screenshot of the configured Shopify admin settings panel.", rubric: ["Shipping profiles are created with correct weight thresholds", "Tax parameters conform to targeted regional jurisdictions", "Checkout settings mandate email capture for abandoned cart flows"] },
+          { title: "Winning Product Research & Competitor Mapping", task: "Analyze products on Amazon/AliExpress using criteria like margin, shipping size, and competitor demand.", deliverable: "Completed Product Research Sheet mapping 5 winning items.", rubric: ["Metrics calculate projected margins (minimum 50%)", "Competitor pricing is logged for comparison", "Sourcing links specify manufacturer wholesale pricing"] },
+          { title: "Optimizing Product Listings: SEO Title & Description", task: "Create an e-commerce product listing featuring SEO-optimized titles, bullet points, and dynamic product descriptions.", deliverable: "Product Listing copywriting asset and photo layout.", rubric: ["Product title contains high-traffic search terms", "Bullet points highlight features and answers to FAQs", "Description features clear layout sections and sizes"] },
+          { title: "E-Commerce Inventory Tracking & Stock Level Rules", task: "Set up stock alerts, manage product variants (size, color), and configure out-of-stock visibility parameters.", deliverable: "Screenshot of your configured Shopify inventory matrix.", rubric: ["Variant tables catalog sizes and colors with custom SKUs", "Low-stock notifications trigger automatically below thresholds", "Out-of-stock items transition to pre-order status"] },
+          { title: "SOP: Dropshipping & Order Processing Workflows", task: "Build an order processing SOP detailing steps to fulfill orders on AliExpress/supplier panels upon customer purchase.", deliverable: "Dropshipping Order Fulfillment SOP PDF.", rubric: ["Workflow outlines order verification steps before purchase", "Supplier instructions mandate blank packaging with no pricing", "Tracking numbers are synchronized back to the client's store"] },
+          { title: "Handling Customer Inquiries & Return Flows", task: "Draft customer service scripts addressing late shipments, broken items, and refund processing protocols.", deliverable: "E-Commerce Support Script Playbook document.", rubric: ["Scripts validate customer complaints with polite phrasing", "Refund protocols outline return address verifications", "Discount templates incentivize disappointed buyers to stay"] },
+          { title: "Designing Shopify High-Conversion Product Pages", task: "Customize a Shopify product page layout, adding user reviews, trust badges, and prominent purchase buttons.", deliverable: "Screenshot of your designed product page layout.", rubric: ["Trust badges are positioned directly below the buy button", "Review widgets display high-quality customer feedback images", "Mobile view is verified with perfect touch-target scaling"] },
+          { title: "Shopify Discounts, Coupons, & Campaigns", task: "Configure active discount structures, setting up spend thresholds and automated seasonal discount codes.", deliverable: "Screenshot of your configured active discounts panel.", rubric: ["Discount codes apply automated markdowns at checkout", "Minimum order spend requirements are defined", "Campaign duration dates map to promotional calendars"] },
+          { title: "E-Commerce Analytics: Tracking Vital Performance Metrics", task: "Review sales analytics, calculating store conversion rate, average order value (AOV), and traffic sources.", deliverable: "Completed E-Commerce Performance Tracking sheet.", rubric: ["Calculations correctly identify store conversion percentages", "Traffic sources segment social vs search organic hits", "Report details actionable recommendations to boost AOV"] },
+          { title: "Portfolio Deliverable: Fully Populated Shopify Store Listing", task: "Assemble your listing copy, variant matrices, and order processing SOPs into a complete product package.", deliverable: "Link to your final e-commerce store product listing project.", rubric: ["Product listing is fully complete, functional, and visually polished", "Variant pricing and stock SKUs are organized cleanly", "Page design incorporates premium e-commerce conversion best practices"] }
+        ]
+      },
+      "card-bookkeeper": {
+        title: "Digital Cloud Bookkeeper",
+        domain: "Sales & Operations Domain",
+        tools: ["Xero", "QuickBooks", "Google Sheets"],
+        lessons: [
+          { title: "Bookkeeping Principles & Professional Ethics", task: "Outline basic bookkeeping concepts (double-entry, accrual vs cash, accounting equation) and compliance protocols.", deliverable: "Bookkeeping Fundamentals Blueprint PDF.", rubric: ["Definitions cover assets, liabilities, and equity", "Accrual vs cash accounting differences are outlined", "Ethics section details strict data confidentiality rules"] },
+          { title: "Chart of Accounts Configuration & Setup", task: "Configure a custom Chart of Accounts (COA) for a service business inside Xero or QuickBooks.", deliverable: "Screenshot of the fully structured Chart of Accounts.", rubric: ["COA includes dedicated codes for revenues, assets, and expenses", "Account classes align with business tax classification codes", "Custom tags segment general administrative expenses"] },
+          { title: "Recording Daily Business Transactions & Expenses", task: "Log a series of raw business transactions, categorizing them correctly under correct expense accounts.", deliverable: "Completed Expense Ledger Spreadsheet containing 20 transactions.", rubric: ["Transactions list date, vendor, amount, and account code", "Business expenses are split from personal expenses", "Receipt attachment links are logged for every transaction"] },
+          { title: "Issuing Professional Client Invoices & Reminders", task: "Design a custom client invoice template, set payment terms, and configure automated payment reminders.", deliverable: "Designed PDF Invoice template ready for client delivery.", rubric: ["Invoice displays bank details, tax rates, and payment due dates", "Reminders are scheduled for 3, 7, and 14 days post due date", "Invoice formatting is professional and matches branding"] },
+          { title: "SOP: Bank Statement Reconciliation Workflows", task: "Match bank statement transactions against internal accounting ledger entries inside QuickBooks or Xero.", deliverable: "Bank Reconciliation Report showing matched balances.", rubric: ["Reconciled balances match bank statements exactly", "Unreconciled transactions are flagged with notes for client review", "Reconciliation logic matches transactions by amount and date"] },
+          { title: "Accounts Receivable & Overdue Invoice Collections", task: "Formulate polite follow-up scripts for past-due invoice collections and outline an escalations timeline.", deliverable: "Accounts Receivable Collections Playbook PDF.", rubric: ["Scripts transition politely from friendly reminders to final demands", "Payment portals and installment plans are outlined in templates", "Overdue timelines specify exact action steps at day 15, 30, and 45"] },
+          { title: "Accounts Payable: Tracking & Reconciling Bills", task: "Log supplier bills, schedule payment runs, and categorize trade payables cleanly inside your accounting dashboard.", deliverable: "Screenshot of your Active Accounts Payable tracker.", rubric: ["Bills catalog correct vendor names, dates, and terms", "Payment schedules optimize business cash flow cycles", "Tax details match invoice receipts with 100% accuracy"] },
+          { title: "Generating Financial Reports: P&L & Balance Sheet", task: "Run standard reports inside QuickBooks, compiling a Profit & Loss (P&L) statement and Balance Sheet.", deliverable: "Completed Monthly Financial Reports Google Sheet link.", rubric: ["P&L correctly calculates gross margins and net income", "Balance Sheet satisfies the accounting equation: Assets = Liabilities + Equity", "Formatting is neat, structured, and presented professionally"] },
+          { title: "Configuring Regional Sales Tax Rules", task: "Configure sales tax rates, setting up tax zones, and generating a tax summary report.", deliverable: "Sales Tax Configuration Guide and report.", rubric: ["Sales tax zone rates match targeted state/country tax laws", "Report lists taxable revenues vs collected tax totals", "Exemption parameters are logged for b2b transactions"] },
+          { title: "Portfolio Deliverable: Reconciling 20 Transactions & Monthly Reporting", task: "Apply all categorization, reconciliation, and reporting protocols to reconcile a mock month's cash transactions and generate reports.", deliverable: "Link to your final Monthly Bookkeeping Portfolio Spreadsheet.", rubric: ["All 20 transactions are reconciled with zero balance variance", "P&L and Balance Sheet reports are formatted cleanly and accurately", "Notes explain all manual entries and adjustments"] }
+        ]
+      },
+      "card-legal-assistant": {
+        title: "Legal Virtual Assistant",
+        domain: "Industry Specific Domain",
+        tools: ["DocuSign", "Clio", "Google Docs"],
+        lessons: [
+          { title: "Legal VA Roles, Court Deadlines & Confidentiality", task: "Master legal terminology, client privacy rules, and court document formatting rules.", deliverable: "Legal Practice SOP and Professional Ethics PDF.", rubric: ["SOP outlines Attorney-Client privilege data safety rules", "Formatting rules define margins and spacing standards", "Court filing timelines list key deadline definitions"] },
+          { title: "Court Brief Formatting: Margins & Spacing SOPs", task: "Take raw legal text and format it into a court-ready brief, configuring double spacing, 1-inch margins, and line numbers.", deliverable: "Link to your formatted Google Document legal brief.", rubric: ["Margins are set to exactly 1 inch on all sides", "Line numbers and caption boxes are formatted cleanly", "Font satisfies local court guidelines (e.g., Arial 12pt)"] },
+          { title: "Sourcing & Organizing Case Directories", task: "Establish a secure folder system to categorize case assets (evidence, pleadings, correspondence, court orders).", deliverable: "Screenshot of your organized Clio or Google Drive case tree.", rubric: ["Directories separate active litigation assets from closed cases", "Files are named using standard legal naming conventions", "Access permissions are secured using client-safe sharing"] },
+          { title: "Drafting Formal Legal Correspondence & Letters", task: "Draft a formal legal letter to opposing counsel requesting document disclosures, adhering to professional protocols.", deliverable: "Legal Correspondence letter template Google Doc.", rubric: ["Letter incorporates formal citation structures and legal headers", "Tone is objective, assertive, and highly professional", "Signature blocks contain necessary attorney credentials"] },
+          { title: "DocuSign: Document Routing & Electronic Signature", task: "Prepare a multi-party contract in DocuSign, adding sign blocks, date stamps, and setting up routing orders.", deliverable: "Screenshot of the configured DocuSign contract routing sequence.", rubric: ["Sign blocks are assigned to correct signature roles", "Automatic reminders trigger for incomplete documents", "Execution logs trace IP addresses and date/time stamps"] },
+          { title: "Managing Attorney Court Calendars", task: "Coordinate an attorney's schedule, booking client hearings, court dates, and setting up automated task deadlines.", deliverable: "Screenshot of the active, color-coded litigation calendar.", rubric: ["Litigation deadlines include a 3-day buffer reminder", "Hearing invites contain Zoom credentials and case numbers", "Schedule blocks preserve attorney travel and prep times"] },
+          { title: "Client Intake Procedures & Consultation SOPs", task: "Create a client intake form and consultation schedule checklist for potential criminal/civil cases.", deliverable: "Legal Intake Form template Built in Google Forms.", rubric: ["Intake form captures conflict-of-interest check data", "Consultation questions gather complete client backgrounds", "Confirmations automate pre-consultation reminder emails"] },
+          { title: "Sourcing Case Precedents & Legal Research", task: "Perform preliminary legal research using Google Scholar or OpenJurist, summarizing 3 case precedents for a brief.", deliverable: "Case Precedent Summary report Google Doc.", rubric: ["Case citations conform to standard Bluebook formats", "Summaries outline case facts, issues, and rulings", "Relevance to the active case is explained clearly"] },
+          { title: "Billing & Hourly Timesheet Administration", task: "Log billable hours for attorneys, allocating time to correct client matter files, and generating invoice draft logs.", deliverable: "Completed Legal Billing Timesheet Spreadsheet.", rubric: ["Timesheet logs specify tenths-of-an-hour increments", "Descriptions outline actual tasks (e.g., 'Draft Pleadings')", "Summary calculates total billable amounts automatically"] },
+          { title: "Portfolio Deliverable: Court Brief & Contract Routing Setup", task: "Synthesize all formatting and DocuSign routing techniques to package a complete court-brief filing set.", deliverable: "Link to your final Legal Assistant portfolio filing kit.", rubric: ["Legal document formatting is flawless and court-compliant", "DocuSign route setups show correct signer sequences", "Case file organization is complete and structured"] }
+        ]
+      },
+      "card-automation": {
+        title: "Tech Automation Assistant",
+        domain: "Tech & Automation Domain",
+        tools: ["Make", "Zapier", "Trello"],
+        lessons: [
+          { title: "Introduction to APIs, Triggers & Actions", task: "Outline basic web automation concepts: APIs, Webhooks, JSON payloads, Triggers, and Actions.", deliverable: "API & Webhook Fundamentals Blueprint PDF.", rubric: ["Definitions cover HTTP methods (GET, POST)", "Webhook payload structures are illustrated cleanly", "Triggers vs Actions execution logic is explained"] },
+          { title: "Zapier: Building a Simple Lead Flow Zap", task: "Create a 2-step Zap in Zapier taking info from a Google Sheet and sending an email notification via Gmail.", deliverable: "Screenshot of the active 2-step Zapier workflow panel.", rubric: ["Gmail notification maps lead name and email fields correctly", "Test executions verify successful field mapping values", "Zap turns on with no configuration errors"] },
+          { title: "Multi-Step Automations & Conditional Path Logic", task: "Build a multi-step Zap with conditional path filters, routing leads depending on budget size.", deliverable: "Screenshot of the multi-step Zap containing filters.", rubric: ["Filter criteria define exact numeric values for budget sorting", "Lead routes send custom responses to separate Slack channels", "Path parameters are mapped with 100% data integrity"] },
+          { title: "Formatter Systems: Custom Text, Numbers & Dates", task: "Configure Zapier Formatter blocks, converting date formats, lowercase emails, and extracting text from blocks.", deliverable: "Screenshot of your configured Formatter settings panel.", rubric: ["Raw dates convert to standardized MM-DD-YYYY formats", "Text parsing isolates specific email domains cleanly", "Numbers format properly for currencies and percentages"] },
+          { title: "Webhooks Integration: Web Form to Airtable", task: "Generate custom Webhook catch URLs in Zapier, capture payload test data, and map parameters to Airtable rows.", deliverable: "Webhook configuration sheet and mapping screenshot.", rubric: ["Webhook capture catches test payload variables with no errors", "Airtable column mapping matches captured parameters", "Execution logs trace webhook success rates"] },
+          { title: "Make.com (Integromat) Workspace & Scenario Building", task: "Configure a Make.com scenario taking incoming RSS feeds and broadcasting them to a Twitter account.", deliverable: "Screenshot of the active Make.com visual scenario editor.", rubric: ["Visual modules connect cleanly with active webhooks", "Field mapping extracts correct post title and link tags", "Scenario turns on with zero execution loop blocks"] },
+          { title: "Integration Error Handling & Automated Alerts", task: "Set up error-catcher filters in Make/Zapier, notifying team Slack chats of failed automation runs.", deliverable: "SOP document outlining integration recovery protocols.", rubric: ["Error handlers catch failed HTTP codes (400, 500)", "Slack alerts detail exactly which scenario failed and when", "Auto-retry rules specify delay thresholds before termination"] },
+          { title: "SOP: Automation Auditing & Task Logs Maintenance", task: "Create a log sheet to trace daily automation execution totals, error rates, and task budget usages.", deliverable: "Completed Automation Performance log tracker.", rubric: ["Logs track daily run success rates (minimum 99.5%)", "Task usage charts predict monthly plan limits", "Recommendations outline ways to minimize useless executions"] },
+          { title: "Connecting CRM Databases to Outreach Platforms", task: "Build an automation flow mapping active CRM contact changes to automated email campaign tags in Mailchimp.", deliverable: "Workflow layout showing active CRM-to-Mailchimp sync.", rubric: ["CRM contact tags synchronize with corresponding subscriber groups", "Email triggers initiate welcome drip campaigns on tag addition", "Opt-out preferences sync to prevent compliance breaches"] },
+          { title: "Portfolio Deliverable: Web Form to CRM Slack Alert", task: "Synthesize all integration techniques to deliver a 100% automated, multi-step Lead Flow scenario.", deliverable: "Link to your final, active Make/Zapier portfolio scenario.", rubric: ["Scenario executes flawlessly from form to Slack notification", "Formatter blocks clean all incoming text, dates, and numbers", "Error handlers are fully active and tested"] }
+        ]
+      },
+      "card-tech-support": {
+        title: "Technical Support Assistant",
+        domain: "Tech & Automation Domain",
+        tools: ["Loom", "Zendesk Support", "Slack"],
+        lessons: [
+          { title: "IT Helpdesk Infrastructure & Ticket Lifecycle", task: "Define helpdesk support tiers, priority matrix parameters, and the standard ticket lifecycle stages.", deliverable: "Helpdesk Administration Playbook PDF.", rubric: ["Definitions separate Tier 1, 2, and 3 support boundaries", "Priority parameters scale by business impact and urgency", "Ticket lifecycle stages map from intake to closure"] },
+          { title: "Zendesk Navigation & Multi-Channel Ticket Routing", task: "Configure ticket views, prioritize incoming queues, and assign tickets based on customer subscription tier.", deliverable: "Screenshot of your configured Zendesk views dashboard.", rubric: ["Queue views separate urgent queries from general tickets", "Priority tickets route automatically to senior support tiers", "Customer status tags label paid accounts for SLA speeds"] },
+          { title: "SOP: Formulating Standard Troubleshooting Templates", task: "Draft standard operating templates to handle login failures, payment card declines, and broken password links.", deliverable: "Tech Support Macro templates Google Doc.", rubric: ["Templates write step-by-step resolution actions clearly", "Formatting uses lists and bold text for fast scanning", "Macro codes link to corresponding knowledge articles"] },
+          { title: "Resolving Login Errors & Browser Cache SOPs", task: "Draft an SOP to resolve login problems, outlining browser cache cleaning, incognito tests, and cookie checks.", deliverable: "Browser Troubleshooting Guide PDF.", rubric: ["Steps outline instructions for Google Chrome, Safari, and Firefox", "Guidelines include clear visual guide prompts", "Guide details browser check links for users"] },
+          { title: "Filing Bug Reports & Developer Hand-Off", task: "Create clear, standardized technical bug reports containing system configurations, logs, and reproduction steps.", deliverable: "Technical Bug Report template Google Doc.", rubric: ["Bug reports catalog exact device, OS, and browser parameters", "SOP details clear step-by-step reproduction instructions", "Expected vs actual behavior blocks isolate code errors"] },
+          { title: "Loom: Creating Video Troubleshooting Guides", task: "Record a high-quality 60-second screen capture guiding a customer to resolve a software configuration error.", deliverable: "Loom Video link featuring clear audio commentary.", rubric: ["Video captures browser actions clearly with mouse click rings", "Voiceover explanations are slow, clear, and easy to follow", "Final steps verify that the error has been successfully fixed"] },
+          { title: "Knowledge Base: Writing Help Center Articles", task: "Write a 300-word FAQ article built in structured HTML, guiding users to set up custom email domains.", deliverable: "Help Center Article draft Built in structured HTML.", rubric: ["Article uses H2/H3 headings and ordered lists for clarity", "Note blocks highlight vital security warnings for domains", "Steps list required SPF and DKIM configuration inputs"] },
+          { title: "Service Level Agreement (SLA) Calculations", task: "Create a tracker to evaluate ticket resolution times against established corporate SLA speed metrics.", deliverable: "SLA performance tracking spreadsheet.", rubric: ["Spreadsheet calculates average response and resolution times", "SLA breaches are highlighted automatically using rules", "Charts visualize monthly support volume trends"] },
+          { title: "De-escalating Angry Customers & Script Workflows", task: "Develop conversational script guides to de-escalate angry users suffering from critical software outages.", deliverable: "Customer De-escalation Scripts Playbook PDF.", rubric: ["Scripts maintain a compassionate, professional, and compliant tone", "Standard answers handle typical clinical FAQ inquiries", "Escalation procedures outline emergency contact steps"] },
+          { title: "Portfolio Deliverable: Mock Ticket Loom Response", task: "Resolve a critical support ticket using macros and an accompanying screen video tutorial.", deliverable: "Link to your final Tech Support portfolio ticket resolution set.", rubric: ["Written response is empathetic, polite, and grammatically perfect", "Loom video resolves the technical problem in under 60 seconds", "SLA times are fully satisfied in the mock ticket log"] }
+        ]
+      }
+    };
+
+    // Client-Side Application State Managers
+    let activeCourseId = "";
+    let activeLessonIndex = 0;
+    let progressState = {}; // Maps courseId -> Array of 10 booleans [true, false, ...]
+    let savedScrollPosition = 0;
+
+    // Helper: Generate 3 customized, highly professional paragraphs dynamically to avoid payload limits
+    function generateDetailedParagraphs(courseTitle, lessonTitle, tools, lessonIndex, task, deliverable) {
+      const toolName = tools[0] || "industry standard applications";
+      const secTool = tools[1] || "ancillary web tools";
+      
+      return [
+        `This module provides an intensive, workplace-ready deep dive into the core mechanics of <strong>${lessonTitle}</strong> within the <strong>${courseTitle}</strong> pathway. Students will learn how to leverage <strong>${toolName}</strong> to establish a seamless, industry-standard workflow, starting with raw resource intake, file organization, and quality audits. By adhering to rigorous professional protocols, you will learn to minimize execution friction, secure client assets, and prepare a highly structured canvas for execution.`,
+        `In this training phase, the primary operational focus shifts to precision execution and quality control. Utilizing <strong>${toolName}</strong> alongside <strong>${secTool}</strong>, you will follow step-by-step Standard Operating Procedures (SOPs) to carry out the core task: <strong>${task}</strong>. We will focus deeply on refining key metrics such as latency, aesthetic spacing, asset resolution, and alignment, ensuring that the draft output meets the exact professional standards expected by top-tier global clients.`,
+        `The lesson concludes with client hand-off formatting and self-auditing frameworks. You will learn how to package and export the final asset as a <strong>${deliverable}</strong>, verifying its structural integrity against a strict multi-point performance rubric. This final step guarantees that your work is fully optimized for downstream production or instant publication, building a solid portfolio piece that demonstrates real-world competency to prospective employers.`
+      ];
+    }
+
+    // Initialize progress arrays from localStorage
+    function initProgress() {
+      const saved = localStorage.getItem('rockwell_progress');
+      if (saved) {
+        try {
+          progressState = JSON.parse(saved);
+        } catch(e) {
+          progressState = {};
+        }
+      }
+      
+      // Ensure every course has a progress tracker array of size 10
+      Object.keys(COURSE_SCHEMAS).forEach(courseId => {
+        if (!progressState[courseId]) {
+          progressState[courseId] = Array(10).fill(false);
+        }
+      });
+    }
+
+    // Save active progress to localStorage
+    function saveProgress() {
+      localStorage.setItem('rockwell_progress', JSON.stringify(progressState));
+    }
+
+    // Trigger Course Takeover Viewport Switch
+    function openCourse(courseId) {
+      if (!COURSE_SCHEMAS[courseId]) return;
+      
+      activeCourseId = courseId;
+      activeLessonIndex = 0;
+      
+      // Save original page scroll position
+      savedScrollPosition = window.scrollY;
+
+      // Hide landing page elements
+      document.querySelector('header').style.display = 'none';
+      const heroSec = document.querySelector('.hero-section');
+      if (heroSec) heroSec.style.display = 'none';
+      document.querySelector('#training-paths').style.display = 'none';
+      document.querySelector('footer').style.display = 'none';
+      
+      // Show lesson takeover screen
+      const lessonScreen = document.getElementById('lesson-screen');
+      lessonScreen.style.display = 'flex';
+      
+      // Render static details and dynamic elements
+      const courseData = COURSE_SCHEMAS[courseId];
+      document.getElementById('sidebar-course-title').textContent = courseData.title;
+      document.getElementById('lesson-active-badge').textContent = courseData.domain;
+      
+      renderLessonList();
+      renderActiveLesson();
+      
+      // Scroll to the top of the viewport
+      window.scrollTo(0, 0);
+    }
+
+    // Close Course Viewport Takeover
+    function closeCourse() {
+      // Hide takeover screens
+      document.getElementById('lesson-screen').style.display = 'none';
+      document.getElementById('claim-screen').style.display = 'none';
+      document.getElementById('certificate-screen').style.display = 'none';
+
+      // Restore landing page elements
+      document.querySelector('header').style.display = 'block';
+      const heroSec = document.querySelector('.hero-section');
+      if (heroSec) heroSec.style.display = 'block';
+      document.querySelector('#training-paths').style.display = 'block';
+      document.querySelector('footer').style.display = 'block';
+      
+      // Restore page scroll position
+      window.scrollTo(0, savedScrollPosition);
+    }
+
+    // Render the left-sidebar list of 10 lessons
+    function renderLessonList() {
+      const container = document.getElementById('lesson-list-container');
+      container.innerHTML = '';
+      
+      const courseData = COURSE_SCHEMAS[activeCourseId];
+      const courseProgress = progressState[activeCourseId] || Array(10).fill(false);
+      
+      courseData.lessons.forEach((lesson, index) => {
+        const item = document.createElement('div');
+        item.className = `lesson-item ${index === activeLessonIndex ? 'active' : ''} ${courseProgress[index] ? 'completed' : ''}`;
+        item.onclick = () => selectLesson(index);
+        
+        // Status symbol (SVG check or circle outline)
+        const statusHtml = courseProgress[index] 
+          ? `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+               <polyline points="20 6 9 17 4 12"></polyline>
+             </svg>`
+          : `<span style="width: 6px; height: 6px; border-radius: 50%; background-color: transparent;"></span>`;
+        
+        item.innerHTML = `
+          <div class="lesson-item-status">
+            ${statusHtml}
+          </div>
+          <div class="lesson-item-info">
+            <span class="lesson-item-number">LESSON 0${index + 1}</span>
+            <span class="lesson-item-title">${lesson.title}</span>
+          </div>
+        `;
+        container.appendChild(item);
+      });
+
+      // Update progress bar
+      const completedCount = courseProgress.filter(Boolean).length;
+      const progressPercent = Math.round((completedCount / 10) * 100);
+      document.getElementById('lesson-progress-text').textContent = `Progress: ${completedCount} of 10 (${progressPercent}%)`;
+      document.getElementById('lesson-progress-bar-inner').style.width = `${progressPercent}%`;
+    }
+
+    // Load active lesson content into the main workspace
+    function renderActiveLesson() {
+      const pane = document.getElementById('lesson-content-pane');
+      const courseData = COURSE_SCHEMAS[activeCourseId];
+      const lessonData = courseData.lessons[activeLessonIndex];
+      const courseProgress = progressState[activeCourseId] || Array(10).fill(false);
+      const isCompleted = courseProgress[activeLessonIndex];
+      
+      // Generate 3 contextual instructional paragraphs
+      const paragraphs = generateDetailedParagraphs(
+        courseData.title,
+        lessonData.title,
+        courseData.tools,
+        activeLessonIndex,
+        lessonData.task,
+        lessonData.deliverable
+      );
+      
+      // Render rubric list
+      const rubricItems = lessonData.rubric.map(item => `
+        <div class="exercise-list-item">
+          <span class="exercise-list-item-clean">${item}</span>
+        </div>
+      `).join('');
+
+      pane.innerHTML = `
+        <div class="lesson-content-header">
+          <span class="lesson-item-number" style="font-size: 13px; font-weight: 700; color: var(--accent-gold); letter-spacing: 0.1em; text-transform: uppercase;">LESSON 0${activeLessonIndex + 1} // ${courseData.title.toUpperCase()}</span>
+          <h2 class="lesson-headline">${lessonData.title}</h2>
+          <div class="lesson-meta-row">
+            <span class="lesson-type-badge">${activeLessonIndex === 9 ? 'Capestone Project' : 'Core Module'}</span>
+            <span class="lesson-type-badge" style="color: var(--accent-gold); border-color: rgba(233, 185, 73, 0.3);">TOOLKIT: ${courseData.tools.join(', ')}</span>
+          </div>
+        </div>
+
+        <div class="lesson-body">
+          <p class="lesson-paragraph">${paragraphs[0]}</p>
+          <p class="lesson-paragraph">${paragraphs[1]}</p>
+          <p class="lesson-paragraph">${paragraphs[2]}</p>
+        </div>
+
+        <!-- Practice Challenge Card styled precisely like reference -->
+        <div class="exercise-card">
+          <span class="exercise-card-badge">PRACTICE PATHWAY</span>
+          <h3 class="exercise-title">
+            <svg class="exercise-check-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10" fill="rgba(16, 185, 129, 0.1)"></circle>
+              <polyline points="16 9 11 14 8 11"></polyline>
+            </svg>
+            <span>Workplace Readiness Challenge</span>
+          </h3>
+
+          <div class="exercise-section">
+            <h4 class="exercise-section-title">SOP Step-by-Step Task</h4>
+            <div class="exercise-content">${lessonData.task}</div>
+          </div>
+
+          <div class="exercise-section">
+            <h4 class="exercise-section-title">Your Client Deliverable</h4>
+            <div class="exercise-content"><strong>REQUIRED OUTPUT:</strong> ${lessonData.deliverable}</div>
+          </div>
+
+          <div class="exercise-section">
+            <h4 class="exercise-section-title">Self-Check Quality Rubric</h4>
+            <div class="exercise-list">
+              ${rubricItems}
+            </div>
+          </div>
+        </div>
+
+        <!-- Navigation Action Buttons -->
+        <div class="lesson-action-bar">
+          <button class="btn-action-secondary" onclick="prevLesson()" ${activeLessonIndex === 0 ? 'disabled style="opacity: 0.4; cursor: not-allowed;"' : ''}>
+            ← Previous Lesson
+          </button>
+          
+          <button class="btn-action-primary" onclick="completeAndNext()">
+            ${isCompleted ? (activeLessonIndex === 9 ? 'Path Completed' : 'Next Lesson →') : (activeLessonIndex === 9 ? 'Complete & Finish Path' : 'Complete & Next Lesson')}
+          </button>
+        </div>
+
+        ${activeLessonIndex === 9 ? `
+        <!-- Prominent CLAIM YOUR CERTIFICATE block -->
+        <div style="margin-top: 40px; padding: 32px; border: 2px dashed var(--accent-gold); border-radius: 8px; background-color: rgba(233, 185, 73, 0.05); text-align: center; box-shadow: 0 4px 20px rgba(0,0,0,0.3);">
+          <span style="font-size: 32px; display: block; margin-bottom: 12px;">🏆</span>
+          <h3 style="font-family: var(--font-display); font-size: 22px; font-weight: 700; color: var(--text-white); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.05em;">CURRICULUM COMPLETE!</h3>
+          <p style="color: var(--text-muted); font-size: 15px; max-width: 600px; margin: 0 auto 24px auto; line-height: 1.6;">
+            You have successfully completed all 10 intensive lesson paths. You are now eligible to claim your certified specialization credentials.
+          </p>
+          <button id="btn-claim-cert" class="btn-action-primary" style="padding: 16px 36px; font-size: 15px; font-weight: 700; width: 100%; max-width: 380px; justify-content: center; box-shadow: 0 4px 15px rgba(233, 185, 73, 0.3);" onclick="openClaimForm()">
+            CLAIM YOUR CERTIFICATE
+          </button>
+        </div>
+        ` : ''}
+      `;
+      
+      // Auto-scroll the detail pane to the top on change
+      pane.scrollTop = 0;
+    }
+
+    // Switch active lesson tab
+    function selectLesson(index) {
+      activeLessonIndex = index;
+      renderLessonList();
+      renderActiveLesson();
+    }
+
+    // Navigate to previous lesson
+    function prevLesson() {
+      if (activeLessonIndex > 0) {
+        activeLessonIndex--;
+        renderLessonList();
+        renderActiveLesson();
+      }
+    }
+
+    // Action: Complete active lesson and auto-advance
+    function completeAndNext() {
+      const courseProgress = progressState[activeCourseId] || Array(10).fill(false);
+      
+      // Mark current lesson as complete
+      courseProgress[activeLessonIndex] = true;
+      progressState[activeCourseId] = courseProgress;
+      saveProgress();
+      
+      if (activeLessonIndex < 9) {
+        // Go to next lesson
+        activeLessonIndex++;
+        renderLessonList();
+        renderActiveLesson();
+      } else {
+        // Path completed! Show beautiful completion alert and launch form
+        alert(`Congratulations! You have completed all 10 lessons of the ${COURSE_SCHEMAS[activeCourseId].title} pathway! Your portfolio materials are ready. Let's claim your official certificate.`);
+        openClaimForm();
+      }
+    }
+
+    // Open Certificate Claim Form (Screen 3)
+    function openClaimForm() {
+      // Hide lesson screen (Screen 2)
+      document.getElementById('lesson-screen').style.display = 'none';
+      
+      // Get current course info
+      const courseData = COURSE_SCHEMAS[activeCourseId];
+      
+      // Set hidden dynamic inputs in the form
+      document.getElementById('form-course-title').value = courseData.title;
+      document.getElementById('form-course-domain').value = courseData.domain;
+      
+      // Reset text inputs
+      document.getElementById('student-name').value = '';
+      document.getElementById('student-email').value = '';
+      
+      // Show claim form
+      document.getElementById('claim-screen').style.display = 'block';
+      window.scrollTo(0, 0);
+    }
+
+    // Go Back to Lesson 10 from Claim Form
+    function backToLessons() {
+      // Hide claim form
+      document.getElementById('claim-screen').style.display = 'none';
+      
+      // Show lesson screen
+      document.getElementById('lesson-screen').style.display = 'flex';
+      window.scrollTo(0, 0);
+    }
+
+    // Submit form and render Certificate success screen (Screen 4)
+    function handleCertificateSubmit(event) {
+      event.preventDefault();
+      
+      const form = event.currentTarget;
+      const formData = new FormData(form);
+      const studentName = document.getElementById('student-name').value;
+      const courseData = COURSE_SCHEMAS[activeCourseId];
+      const nicheTitle = courseData.title;
+      
+      // Render dynamic values inside Screen 4 Certificate Layout
+      document.getElementById('cert-recipient-name').textContent = studentName;
+      document.getElementById('cert-dynamic-niche').textContent = nicheTitle;
+      
+      // Generate a beautiful, unique Registration ID
+      const randomSuffix = Math.floor(10000 + Math.random() * 90000);
+      const credentialId = `RCWL-2026-${randomSuffix}`;
+      document.getElementById('cert-security-id-header').textContent = credentialId;
+      document.getElementById('cert-security-id-body').textContent = credentialId;
+      
+      // Hide Claim Form Screen (Screen 3)
+      document.getElementById('claim-screen').style.display = 'none';
+      
+      // Show Certificate Preview Screen (Screen 4)
+      document.getElementById('certificate-screen').style.display = 'block';
+      window.scrollTo(0, 0);
+      
+      // Transmit data to Web3Forms using standard fetch in background
+      fetch(form.action, {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      })
+      .then(response => {
+        console.log("Certificate credentials sent successfully via Web3Forms API!");
+      })
+      .catch(error => {
+        console.error("Error transmitting form:", error);
+      });
+    }
+
+    // Event listener registration
+    document.addEventListener('DOMContentLoaded', () => {
+      // Find all "Choose This Path" buttons and attach listeners
+      const cardButtons = document.querySelectorAll('.card-btn');
+      cardButtons.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.preventDefault();
+          const card = btn.closest('.card');
+          if (card && card.id) {
+            openCourse(card.id);
+          }
+        });
+      });
+      
+      // Initialize state from local storage
+      initProgress();
+    });
+  </script>
+</body>
+</html>
